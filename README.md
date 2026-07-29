@@ -1,7 +1,7 @@
 ```mermaid
 %%{init: {'theme':'dark', 'themeVariables': { 'primaryColor': '#0d1117', 'primaryTextColor': '#c9d1d9', 'lineColor': '#3fb950'}}}%%
 graph TB
-  A["🧑‍💻 Mohammad Mehrani"] --> B["⚡ GitHub Actions"]
+  A["🧑‍💻 maddix"] --> B["⚡ GitHub Actions"]
   B --> C["🔄 3D Contribution<br/>Graphs"]
   B --> D["📊 Stats Sync"]
   B --> E["🏆 Trophy Engine"]
@@ -53,7 +53,7 @@ graph TB
 
 ```yaml
 about_me:
-  name: "Mohammad Mehrani"
+  name: "maddix"
   alias: "Maddix Mhn"
   role: "DevOps Engineer / Cloud Architect"
   location: "Iran"
@@ -146,7 +146,7 @@ about_me:
 ⚙️ Automated Workflow Pipeline
 
     ┌─────────────────────────────────────────────────────────┐
-    │                    Mohammad Mehrani                     │
+    │                    maddix                     │
     │                   CI/CD · Automation · Cloud            │
     └──────────────────────┬──────────────────────────────────┘
                            │

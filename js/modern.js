@@ -13,7 +13,7 @@
       hero_eyebrow: "DevOps Engineer | Platform & Cloud",
       hero_title: "I build fast, secure, and reliable cloud platforms.",
       hero_desc:
-        "Mohammad Mehrani with hands-on experience in CI/CD, Kubernetes, infrastructure automation, observability, and production-grade Linux environments.",
+        "maddix with hands-on experience in CI/CD, Kubernetes, infrastructure automation, observability, and production-grade Linux environments.",
       hero_resume: "Download Resume",
       hero_hire: "Hire Me",
       hero_chip: "Available for remote contracts",
@@ -242,8 +242,8 @@
     }
   };
 
-  dict.en.site_title = "Mohammad Mehrani | DevOps Engineer";
-  dict.en.meta_description = "Mohammad Mehrani | DevOps Engineer, Cloud & Platform Specialist";
+  dict.en.site_title = "maddix | DevOps Engineer";
+  dict.en.meta_description = "maddix | DevOps Engineer, Cloud & Platform Specialist";
   dict.fa.site_title = "\u0645\u062d\u0645\u062f \u0645\u0647\u0631\u0627\u0646\u06cc | \u0645\u0647\u0646\u062f\u0633 \u062f\u0648\u0627\u067e\u0633";
   dict.fa.meta_description =
     "\u0645\u062d\u0645\u062f \u0645\u0647\u0631\u0627\u0646\u06cc | \u0645\u0647\u0646\u062f\u0633 \u062f\u0648\u0627\u067e\u0633\u060c \u067e\u0644\u062a\u0641\u0631\u0645 \u0648 \u0632\u06cc\u0631\u0633\u0627\u062e\u062a \u0627\u0628\u0631\u06cc";
