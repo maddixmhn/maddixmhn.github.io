@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-08-01
 
+Use frontend preview placeholders for broken screenshots
+
+### 2026-07-31
+
+chore: update CI status
+
+### 2026-07-31
+
+chore: update changelog
+
+### 2026-08-01
+
 Add website projects to portfolio section
 
 ### 2026-07-29
@@ -189,16 +201,4 @@ chore: update changelog
 ### 2026-07-18
 
 Fix 3D contribution SVG paths in README
-
-### 2026-07-18
-
-chore: update CI status
-
-### 2026-07-18
-
-chore: update CI status
-
-### 2026-07-18
-
-chore: update changelog
 
