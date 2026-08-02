@@ -1194,7 +1194,8 @@
   }
 
   function initPortfolioModal() {
-    const cards = document.querySelectorAll(".portfolio-card");
+    const cards = Array.from(document.querySelectorAll(".portfolio-card"));
+    const clickable = cards.filter((c) => c.dataset.url);
     const modal = document.getElementById("portfolioModal");
     const previewImg = document.getElementById("portfolioPreviewImg");
     const loading = document.getElementById("portfolioLoading");
@@ -1202,20 +1203,37 @@
     const closeBtn = modal?.querySelector(".pmb-close");
     const backdrop = modal?.querySelector(".portfolio-modal-backdrop");
     const externalBtn = document.getElementById("pmbExternal");
+    const prevBtn = document.getElementById("pmbPrev");
+    const nextBtn = document.getElementById("pmbNext");
 
     if (!modal || !previewImg) return;
 
-    const openModal = (url) => {
+    let currentIndex = 0;
+
+    const loadImage = (card) => {
+      const url = card.dataset.url;
+      const local = card.dataset.img;
       urlText.textContent = url;
       if (externalBtn) externalBtn.href = url;
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
       if (loading) loading.classList.remove("hidden");
-      previewImg.src = url.includes("iodeck.ir")
-        ? "https://api.microlink.io/?url=" + encodeURIComponent(url) + "&screenshot=true&overlay=none&meta=false&force=true&embed=screenshot.url"
-        : "https://image.thum.io/get/width/1920/crop/1080/" + url;
+      if (local) {
+        previewImg.src = local;
+      } else {
+        previewImg.src = url.includes("iodeck.ir")
+          ? "https://api.microlink.io/?url=" + encodeURIComponent(url) + "&screenshot=true&overlay=none&meta=false&force=true&embed=screenshot.url"
+          : "https://image.thum.io/get/width/1920/crop/1080/" + url;
+      }
       previewImg.onload = () => { if (loading) loading.classList.add("hidden"); };
       previewImg.onerror = () => { if (loading) loading.classList.add("hidden"); };
+    };
+
+    const openModal = (index) => {
+      currentIndex = index;
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+      loadImage(clickable[currentIndex]);
+      if (prevBtn) prevBtn.style.display = clickable.length > 1 ? "flex" : "none";
+      if (nextBtn) nextBtn.style.display = clickable.length > 1 ? "flex" : "none";
     };
 
     const closeModal = () => {
@@ -1224,17 +1242,25 @@
       setTimeout(() => { previewImg.src = ""; }, 300);
     };
 
-    cards.forEach((card) => {
-      card.addEventListener("click", () => {
-        const url = card.dataset.url;
-        if (url) openModal(url);
-      });
+    const step = (dir) => {
+      if (!clickable.length) return;
+      currentIndex = (currentIndex + dir + clickable.length) % clickable.length;
+      loadImage(clickable[currentIndex]);
+    };
+
+    clickable.forEach((card, index) => {
+      card.addEventListener("click", () => openModal(index));
     });
 
+    prevBtn?.addEventListener("click", (e) => { e.stopPropagation(); step(-1); });
+    nextBtn?.addEventListener("click", (e) => { e.stopPropagation(); step(1); });
     closeBtn?.addEventListener("click", closeModal);
     backdrop?.addEventListener("click", closeModal);
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
+      if (!modal.classList.contains("active")) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") step(-1);
+      if (e.key === "ArrowRight") step(1);
     });
   }
 
