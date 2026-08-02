@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-08-02
 
+Full-page portfolio thumbnails with object-fit contain + local images in modal
+
+### 2026-08-02
+
+chore: update CI status
+
+### 2026-08-02
+
+chore: update changelog
+
+### 2026-08-02
+
 Replace remaining thum.io previews with screenshots; point Panahyar & Rhaegal cards to live Vercel templates
 
 ### 2026-08-02
@@ -187,18 +199,6 @@ chore: update repo stats
 generated: profile-3d-contrib [skip ci]
 
 ### 2026-07-23
-
-chore: update CI status
-
-### 2026-07-23
-
-chore: update repo stats
-
-### 2026-07-23
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-22
 
 chore: update CI status
 
