@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-08-02
 
+Replace Viserion with Panahyar, fix Surin & Balerion previews
+
+### 2026-08-02
+
+chore: update CI status
+
+### 2026-08-02
+
+chore: update changelog
+
+### 2026-08-02
+
 Add SamanShop preview, refresh Bahar Tamir screenshot
 
 ### 2026-08-01
@@ -187,18 +199,6 @@ chore: update CI status
 chore: update repo stats
 
 ### 2026-07-21
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-20
-
-chore: update CI status
-
-### 2026-07-20
-
-chore: update repo stats
-
-### 2026-07-20
 
 generated: profile-3d-contrib [skip ci]
 
