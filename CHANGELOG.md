@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-08-06
 
+Update portfolio: SamanShop → Shiktak (shiktak.com live) with new screenshots
+
+### 2026-08-06
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-06
+
+chore: update CI status
+
+### 2026-08-06
+
+chore: update changelog
+
+### 2026-08-06
+
 Fix broken README badges: replace dead services (summary-cards, trophies, heroku streak) with working alternatives
 
 ### 2026-08-05
@@ -185,20 +201,4 @@ chore: update repo stats
 ### 2026-07-30
 
 generated: profile-3d-contrib [skip ci]
-
-### 2026-07-29
-
-chore: update CI status
-
-### 2026-07-29
-
-chore: update repo stats
-
-### 2026-07-29
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-28
-
-chore: update CI status
 
