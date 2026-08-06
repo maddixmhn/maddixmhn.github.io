@@ -74,31 +74,17 @@ about_me:
 </p>
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=maddixmhn&theme=github_dark" alt="Profile details" width="90%" />
-</p>
-
-<p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=maddixmhn&bg_color=0d1117&color=58a6ff&line=3fb950&point=f78166&area=true&hide_border=true" alt="Activity graph" width="95%" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=maddixmhn&show_icons=true&hide_border=true&theme=transparent" alt="GitHub stats" />
+  <img src="https://github-readme-stats-anuraghazra1.vercel.app/api?username=maddixmhn&show_icons=true&hide_border=true&theme=transparent" alt="GitHub stats" />
   &nbsp;
-  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=maddixmhn&layout=compact&hide_border=true&theme=transparent" alt="Top languages" />
+  <img src="https://github-readme-stats-anuraghazra1.vercel.app/api/top-langs/?username=maddixmhn&layout=compact&hide_border=true&theme=transparent" alt="Top languages" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=maddixmhn&theme=transparent&hide_border=true" alt="GitHub streak" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=maddixmhn&theme=github_dark" alt="Repos per language" />
-  &nbsp;
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=maddixmhn&theme=github_dark" alt="Most commit language" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy-tawny.vercel.app/?username=maddixmhn&theme=darkhub&no-frame=true&column=4&margin-w=15" alt="GitHub Trophies" width="90%" />
+  <img src="https://streak-stats.demolab.com/?user=maddixmhn&theme=transparent&hide_border=true" alt="GitHub streak" />
 </p>
 
 <p align="center">
