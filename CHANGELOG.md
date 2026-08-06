@@ -2,6 +2,54 @@
 
 Auto-generated from conventional commits.
 
+### 2026-08-06
+
+Fix broken README badges: replace dead services (summary-cards, trophies, heroku streak) with working alternatives
+
+### 2026-08-05
+
+chore: update CI status
+
+### 2026-08-05
+
+chore: update repo stats
+
+### 2026-08-05
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-04
+
+chore: update CI status
+
+### 2026-08-04
+
+chore: update repo stats
+
+### 2026-08-04
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-03
+
+chore: update CI status
+
+### 2026-08-03
+
+chore: update repo stats
+
+### 2026-08-03
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-02
+
+chore: update CI status
+
+### 2026-08-02
+
+chore: update changelog
+
 ### 2026-08-02
 
 Hero-view thumbnails in cards; full-page images shown in modal
@@ -151,54 +199,6 @@ chore: update repo stats
 generated: profile-3d-contrib [skip ci]
 
 ### 2026-07-28
-
-chore: update CI status
-
-### 2026-07-28
-
-chore: update repo stats
-
-### 2026-07-28
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-27
-
-chore: update CI status
-
-### 2026-07-27
-
-chore: update repo stats
-
-### 2026-07-27
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-26
-
-chore: update CI status
-
-### 2026-07-26
-
-chore: update repo stats
-
-### 2026-07-26
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-25
-
-chore: update CI status
-
-### 2026-07-25
-
-chore: update repo stats
-
-### 2026-07-25
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-24
 
 chore: update CI status
 
