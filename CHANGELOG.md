@@ -2,6 +2,38 @@
 
 Auto-generated from conventional commits.
 
+### 2026-08-07
+
+Live screenshots for Bahar Tamir & Shiktak; rename Panahyar card to Immigration Journey
+
+### 2026-08-07
+
+chore: update CI status
+
+### 2026-08-07
+
+chore: update repo stats
+
+### 2026-08-07
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-06
+
+chore: update CI status
+
+### 2026-08-06
+
+chore: update repo stats
+
+### 2026-08-06
+
+chore: update CI status
+
+### 2026-08-06
+
+chore: update changelog
+
 ### 2026-08-06
 
 Update portfolio: SamanShop → Shiktak (shiktak.com live) with new screenshots
@@ -169,36 +201,4 @@ chore: update CI status
 ### 2026-07-31
 
 chore: update changelog
-
-### 2026-08-01
-
-Add website projects to portfolio section
-
-### 2026-07-29
-
-Replace name references: Mohammad Mehrani → maddix
-
-### 2026-07-31
-
-chore: update CI status
-
-### 2026-07-31
-
-chore: update repo stats
-
-### 2026-07-31
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-30
-
-chore: update CI status
-
-### 2026-07-30
-
-chore: update repo stats
-
-### 2026-07-30
-
-generated: profile-3d-contrib [skip ci]
 
