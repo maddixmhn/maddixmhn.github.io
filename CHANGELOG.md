@@ -2,6 +2,106 @@
 
 Auto-generated from conventional commits.
 
+### 2026-08-15
+
+Fix portfolio card mismatches: WebStruct rename, netagha/maddixtools image-only
+
+### 2026-08-15
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-14
+
+chore: update CI status
+
+### 2026-08-14
+
+chore: update repo stats
+
+### 2026-08-14
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-13
+
+chore: update CI status
+
+### 2026-08-13
+
+chore: update repo stats
+
+### 2026-08-13
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-12
+
+chore: update CI status
+
+### 2026-08-12
+
+chore: update repo stats
+
+### 2026-08-12
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-11
+
+chore: update CI status
+
+### 2026-08-11
+
+chore: update repo stats
+
+### 2026-08-11
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-10
+
+chore: update CI status
+
+### 2026-08-10
+
+chore: update repo stats
+
+### 2026-08-10
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-09
+
+chore: update CI status
+
+### 2026-08-09
+
+chore: update repo stats
+
+### 2026-08-09
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-08
+
+chore: update CI status
+
+### 2026-08-08
+
+chore: update repo stats
+
+### 2026-08-08
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-07
+
+chore: update CI status
+
+### 2026-08-07
+
+chore: update changelog
+
 ### 2026-08-07
 
 Live screenshots for Bahar Tamir & Shiktak; rename Panahyar card to Immigration Journey
@@ -101,104 +201,4 @@ chore: update changelog
 ### 2026-08-02
 
 Hero-view thumbnails in cards; full-page images shown in modal
-
-### 2026-08-02
-
-chore: update CI status
-
-### 2026-08-02
-
-chore: update changelog
-
-### 2026-08-02
-
-Full-page portfolio thumbnails with object-fit contain + local images in modal
-
-### 2026-08-02
-
-chore: update CI status
-
-### 2026-08-02
-
-chore: update changelog
-
-### 2026-08-02
-
-Replace remaining thum.io previews with screenshots; point Panahyar & Rhaegal cards to live Vercel templates
-
-### 2026-08-02
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-02
-
-chore: update CI status
-
-### 2026-08-02
-
-chore: update CI status
-
-### 2026-08-02
-
-chore: update changelog
-
-### 2026-08-02
-
-Replace Viserion with Panahyar, fix Surin & Balerion previews
-
-### 2026-08-02
-
-chore: update CI status
-
-### 2026-08-02
-
-chore: update changelog
-
-### 2026-08-02
-
-Add SamanShop preview, refresh Bahar Tamir screenshot
-
-### 2026-08-01
-
-chore: update CI status
-
-### 2026-08-01
-
-chore: update repo stats
-
-### 2026-08-01
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-07-31
-
-chore: update CI status
-
-### 2026-07-31
-
-chore: update changelog
-
-### 2026-08-01
-
-Use real website screenshots for portfolio previews
-
-### 2026-07-31
-
-chore: update CI status
-
-### 2026-07-31
-
-chore: update changelog
-
-### 2026-08-01
-
-Use frontend preview placeholders for broken screenshots
-
-### 2026-07-31
-
-chore: update CI status
-
-### 2026-07-31
-
-chore: update changelog
 
