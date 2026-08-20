@@ -2,6 +2,86 @@
 
 Auto-generated from conventional commits.
 
+### 2026-08-20
+
+Add 2026 resume PDF, fix download button; add Kurt Viana, ArcadeX, BaharAudio portfolio cards
+
+### 2026-08-20
+
+chore: update CI status
+
+### 2026-08-20
+
+chore: update repo stats
+
+### 2026-08-20
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-19
+
+chore: update CI status
+
+### 2026-08-19
+
+chore: update repo stats
+
+### 2026-08-19
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-18
+
+chore: update CI status
+
+### 2026-08-18
+
+chore: update repo stats
+
+### 2026-08-18
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-17
+
+chore: update CI status
+
+### 2026-08-17
+
+chore: update repo stats
+
+### 2026-08-17
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-16
+
+chore: update CI status
+
+### 2026-08-16
+
+chore: update repo stats
+
+### 2026-08-16
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-15
+
+chore: update CI status
+
+### 2026-08-15
+
+chore: update repo stats
+
+### 2026-08-15
+
+chore: update CI status
+
+### 2026-08-15
+
+chore: update changelog
+
 ### 2026-08-15
 
 Fix portfolio card mismatches: WebStruct rename, netagha/maddixtools image-only
@@ -121,84 +201,4 @@ generated: profile-3d-contrib [skip ci]
 ### 2026-08-06
 
 chore: update CI status
-
-### 2026-08-06
-
-chore: update repo stats
-
-### 2026-08-06
-
-chore: update CI status
-
-### 2026-08-06
-
-chore: update changelog
-
-### 2026-08-06
-
-Update portfolio: SamanShop → Shiktak (shiktak.com live) with new screenshots
-
-### 2026-08-06
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-06
-
-chore: update CI status
-
-### 2026-08-06
-
-chore: update changelog
-
-### 2026-08-06
-
-Fix broken README badges: replace dead services (summary-cards, trophies, heroku streak) with working alternatives
-
-### 2026-08-05
-
-chore: update CI status
-
-### 2026-08-05
-
-chore: update repo stats
-
-### 2026-08-05
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-04
-
-chore: update CI status
-
-### 2026-08-04
-
-chore: update repo stats
-
-### 2026-08-04
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-03
-
-chore: update CI status
-
-### 2026-08-03
-
-chore: update repo stats
-
-### 2026-08-03
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-02
-
-chore: update CI status
-
-### 2026-08-02
-
-chore: update changelog
-
-### 2026-08-02
-
-Hero-view thumbnails in cards; full-page images shown in modal
 
