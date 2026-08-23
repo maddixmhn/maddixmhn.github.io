@@ -1,15 +1,19 @@
 /*
  * maddix bridge — tiny zero-dependency Node server
  * Endpoints:
+ *   POST /ai/chat               { lang?, messages:[{role,content}] }          -> MaddyBot AI (Groq)
  *   POST /ai/contact            { name?, reply?, message, lang?, page?, sid }  -> sends to admin Telegram
  *   GET  /ai/contact/:sid/replies?since=<ts>                                    -> visitor polls for admin replies
  *   GET  /healthz
  *
  * Env:
- *   TG_TOKEN        bot token from @BotFather           (required)
- *   ADMIN_USERNAME  telegram username WITHOUT @         (default: MadiM1992)
- *   ALLOWED_ORIGINS comma separated origins             (default: https://maddixmhn.github.io)
- *   PORT                                                (default: 8787)
+ *   GROQ_API_KEY    groq api key gsk_...                       (required for /ai/chat)
+ *   GROQ_MODEL      primary model                              (default: openai/gpt-oss-20b)
+ *   GROQ_FALLBACK   fallback model                             (default: groq/compound-mini)
+ *   TG_TOKEN        bot token from @BotFather                  (optional until telegram goes live)
+ *   ADMIN_USERNAME  telegram username WITHOUT @                (default: MadiM1992)
+ *   ALLOWED_ORIGINS comma separated origins                    (default: https://maddixmhn.github.io)
+ *   PORT                                                       (default: 8787)
  */
 "use strict";
 const http = require("http");
@@ -19,10 +23,35 @@ const fs = require("fs");
 const path = require("path");
 
 const PORT = process.env.PORT || 8787;
+const GROQ_KEY = process.env.GROQ_API_KEY || "";
+const GROQ_MODEL = process.env.GROQ_MODEL || "openai/gpt-oss-20b";
+const GROQ_FALLBACK = process.env.GROQ_FALLBACK || "groq/compound-mini";
 const TG_TOKEN = process.env.TG_TOKEN || "";
 const ADMIN_USERNAME = (process.env.ADMIN_USERNAME || "MadiM1992").replace(/^@/, "");
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "https://maddixmhn.github.io").split(",").map(s => s.trim());
 const STATE_FILE = path.join(__dirname, "state.json");
+
+const SYSTEM_PROMPT = {
+  en: `You are MaddyBot, the friendly AI assistant on maddix's personal website (maddixmhn.github.io).
+About maddix: Mohammad Mehrani ("maddix"), DevOps Engineer & Cloud Architect based in Iran (Tehran).
+Skills: CI/CD (GitHub Actions, GitLab CI), Docker/Kubernetes, Infrastructure as Code (Terraform, Ansible),
+cloud platforms (AWS/Azure basics), monitoring (Grafana, Prometheus), Linux servers, nginx/Caddy,
+and full-stack web projects (Node.js, ASP.NET, Vue).
+Notable projects: Shiktak (streetwear e-commerce), Kurt Viana Transportes site, ArcadeX Metamarket, IODECK, BaharTamir, DrKimiah, TehranSuzuki, SurinsF, Panahyar, Rhaegal/Dreamfyre/Balerion templates.
+Contact: email mohammad@iodeck.ir, Telegram @MadiM1992, LinkedIn maddixmhn.
+Style: warm, concise (max 4 short sentences unless asked), a little playful, occasional emoji.
+If asked something unrelated to maddix, answer briefly anyway but try to steer back to his work/services.
+Never invent facts about maddix. If unsure, point visitors to the contact widget or email.`,
+  fa: `تو میدی‌بات هستی، دستیار هوشمند دوستانه در وبسایت شخصی maddix (mohammadmehrani.github.io).
+درباره maddix: محمد مهرانی، مهندس DevOps و معمار کلود، ساکن تهران.
+مهارت‌ها: CI/CD (GitHub Actions، GitLab CI)، داکر و کوبرنتیز، Infrastructure as Code (Terraform، Ansible)،
+مانیتورینگ (Grafana، Prometheus)، لینوکس، nginx/Caddy و پروژه‌های فول‌استک (Node.js، ASP.NET، Vue).
+پروژه‌های شاخص: شیکتاک (فروشگاه پوشاک)، سایت کورت ویانا، ArcadeX، IODECK، بهار تعمیر، دکتر کیمیا، تهران سوزوکی، سورین صنعت، پناهیار.
+تماس: ایمیل mohammad@iodeck.ir، تلگرام @MadiM1992، لینکدین maddixmhn.
+سبک: صمیمی، کوتاه (حداکثر ۴ جمله مگر اینکه توضیح بیشتری بخواهند)، کمی شوخ، گاهی ایموجی.
+اگر سؤال بی‌ربط بود، کوتاه جواب بده ولی سعی کن بحث را به کارها و خدماتش برگردانی.
+هیچ واقعیتی درباره maddix از خودت نساز؛ اگر مطمئن نیستی، به ویجت تماس یا ایمیل ارجاع بده.`
+};
 
 /* ---------- persistence ---------- */
 let state = { adminChatId: null, threads: {}, offsets: {} }; // threads[sid] = [{from,text,ts}]
@@ -142,13 +171,82 @@ function readBody(req) {
 }
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+/* ---------- groq (openai-compatible) ---------- */
+function groqChat(model, messages) {
+  return new Promise((resolve, reject) => {
+    const payload = JSON.stringify({ model, messages, max_tokens: 600, temperature: 0.7 });
+    const req = https.request({
+      hostname: "api.groq.com",
+      path: "/openai/v1/chat/completions",
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + GROQ_KEY,
+        "Content-Type": "application/json",
+        "Content-Length": Buffer.byteLength(payload)
+      },
+      timeout: 30000
+    }, res => {
+      let data = "";
+      res.on("data", c => (data += c));
+      res.on("end", () => {
+        try {
+          if (res.statusCode !== 200) return reject(new Error("groq_" + res.statusCode + ": " + data.substring(0, 200)));
+          const j = JSON.parse(data);
+          resolve((j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) || "");
+        } catch (e) { reject(e); }
+      });
+    });
+    req.on("error", reject);
+    req.on("timeout", () => req.destroy(new Error("timeout")));
+    req.write(payload);
+    req.end();
+  });
+}
+const stripThink = s => String(s).replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+async function askAI(lang, history) {
+  const sys = { role: "system", content: SYSTEM_PROMPT[lang] || SYSTEM_PROMPT.en };
+  const msgs = [sys, ...history.slice(-10)];
+  try {
+    const out = await groqChat(GROQ_MODEL, msgs);
+    if (!out.trim()) throw new Error("empty");
+    return stripThink(out);
+  } catch (e) {
+    console.log("[ai] primary failed:", e.message);
+    const out = await groqChat(GROQ_FALLBACK, msgs);
+    return stripThink(out);
+  }
+}
+
 /* ---------- server ---------- */
 http.createServer(async (req, res) => {
   cors(res, req.headers.origin || "");
   if (req.method === "OPTIONS") { res.writeHead(204); res.end(); return; }
   const url = new URL(req.url, "http://x");
 
-  if (url.pathname === "/healthz") return json(res, 200, { ok: true, admin: !!state.adminChatId });
+  if (url.pathname === "/healthz") return json(res, 200, { ok: true, admin: !!state.adminChatId, ai: !!GROQ_KEY });
+
+  /* MaddyBot AI chat */
+  if (req.method === "POST" && url.pathname === "/ai/chat") {
+    if (!GROQ_KEY) return json(res, 503, { ok: false, error: "ai_disabled" });
+    const ip = req.socket.remoteAddress || "?";
+    if (limited(ip)) return json(res, 429, { ok: false, error: "rate_limited" });
+    try {
+      const body = JSON.parse(await readBody(req));
+      const lang = body.lang === "fa" ? "fa" : "en";
+      let history = Array.isArray(body.messages) ? body.messages : [];
+      history = history
+        .filter(m => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
+        .map(m => ({ role: m.role, content: m.content.substring(0, 1000) }));
+      if (!history.length || history[history.length - 1].role !== "user") {
+        return json(res, 400, { ok: false, error: "empty" });
+      }
+      const reply = await askAI(lang, history);
+      return json(res, 200, { ok: true, reply: reply.substring(0, 1200) });
+    } catch (e) {
+      console.log("[ai] error:", e.message);
+      return json(res, 500, { ok: false, error: "ai_failed" });
+    }
+  }
 
   /* visitor sends a message */
   if (req.method === "POST" && url.pathname === "/ai/contact") {
