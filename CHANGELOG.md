@@ -2,6 +2,42 @@
 
 Auto-generated from conventional commits.
 
+### 2026-08-23
+
+Add MaddyBot: floating AI pet widget with chat assistant (backend endpoint pending)
+
+### 2026-08-22
+
+chore: update CI status
+
+### 2026-08-22
+
+chore: update repo stats
+
+### 2026-08-22
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-21
+
+chore: update CI status
+
+### 2026-08-21
+
+chore: update repo stats
+
+### 2026-08-21
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-20
+
+chore: update CI status
+
+### 2026-08-20
+
+chore: update changelog
+
 ### 2026-08-20
 
 Add 2026 resume PDF, fix download button; add Kurt Viana, ArcadeX, BaharAudio portfolio cards
@@ -163,42 +199,6 @@ chore: update repo stats
 generated: profile-3d-contrib [skip ci]
 
 ### 2026-08-08
-
-chore: update CI status
-
-### 2026-08-08
-
-chore: update repo stats
-
-### 2026-08-08
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-07
-
-chore: update CI status
-
-### 2026-08-07
-
-chore: update changelog
-
-### 2026-08-07
-
-Live screenshots for Bahar Tamir & Shiktak; rename Panahyar card to Immigration Journey
-
-### 2026-08-07
-
-chore: update CI status
-
-### 2026-08-07
-
-chore: update repo stats
-
-### 2026-08-07
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-06
 
 chore: update CI status
 
