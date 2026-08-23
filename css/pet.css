@@ -158,6 +158,100 @@ html[data-theme="light"] .mzpet-head { background: linear-gradient(135deg, rgba(
 }
 .mzpet-close:hover { background: rgba(255, 77, 77, 0.14); color: #ff6b6b; }
 
+/* tabs (AI / contact) */
+.mzpet-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px 0;
+}
+.mzpet-tab {
+  flex: 1;
+  font-family: inherit;
+  font-size: 0.78rem;
+  padding: 6px 4px;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.mzpet-tab span { pointer-events: none; }
+.mzpet-tab:hover { color: var(--text); }
+.mzpet-tab.active {
+  color: var(--accent);
+  background: rgba(31, 224, 181, 0.08);
+  border-color: var(--stroke);
+}
+html[data-theme="light"] .mzpet-tab.active { color: #b04a1e; background: rgba(224, 96, 48, 0.07); }
+html[dir="rtl"] .mzpet-tabs { direction: rtl; }
+
+.mzpet-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* contact form */
+.mzpet-contact {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px 14px;
+  overflow-y: auto;
+}
+.mzpet-contact-hint {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 2px;
+}
+.mzpet-field {
+  font-family: inherit;
+  font-size: 0.86rem;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  padding: 9px 13px;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+html[data-theme="light"] .mzpet-field { background: rgba(255, 255, 255, 0.65); }
+.mzpet-field::placeholder { color: var(--muted); }
+.mzpet-field:focus { border-color: var(--accent); }
+.mzpet-area { min-height: 96px; line-height: 1.55; }
+
+.mzpet-send-wide {
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 0;
+  border-radius: 12px;
+  padding: 11px;
+  cursor: pointer;
+  color: #04241d;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 4px 14px rgba(31, 224, 181, 0.35);
+  transition: transform 0.15s, opacity 0.2s;
+}
+html[data-theme="light"] .mzpet-send-wide { color: #fff; }
+.mzpet-send-wide:hover { transform: translateY(-1px); }
+.mzpet-send-wide:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+.mzpet-contact-ok {
+  font-size: 0.84rem;
+  text-align: center;
+  margin: 0;
+  animation: mz-pop 0.25s ease;
+}
+.mzpet-contact-ok.ok { color: var(--accent); }
+.mzpet-contact-ok.err { color: #ff6b6b; }
+
 /* messages */
 .mzpet-msgs {
   flex: 1;

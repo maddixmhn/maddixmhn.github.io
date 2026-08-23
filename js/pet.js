@@ -3,6 +3,7 @@
   "use strict";
 
   var AI_ENDPOINT = "https://shiktak.com/ai/chat";
+  var CONTACT_ENDPOINT = "https://shiktak.com/ai/contact";
   var STORAGE_KEY = "maddybot-history";
   var MAX_TURNS = 10;
 
@@ -73,12 +74,28 @@
       '<div class="mzpet-head-info"><strong>MaddyBot</strong><span class="mzpet-head-sub"><i class="mzpet-online"></i><span id="mzpetHeadSub">online</span></span></div>' +
       '<button class="mzpet-close" id="mzpetClose" aria-label="Close">&times;</button>' +
     '</div>' +
-    '<div class="mzpet-msgs" id="mzpetMsgs"></div>' +
-    '<div class="mzpet-chips" id="mzpetChips"></div>' +
-    '<form class="mzpet-form" id="mzpetForm">' +
-      '<input class="mzpet-input" id="mzpetInput" type="text" autocomplete="off" maxlength="500" />' +
-      '<button class="mzpet-send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>' +
-    '</form>';
+    '<div class="mzpet-tabs">' +
+      '<button type="button" class="mzpet-tab active" id="mzTabAi">🤖 <span>' + (t("AI Chat", "چت هوشمند")) + '</span></button>' +
+      '<button type="button" class="mzpet-tab" id="mzTabContact">✉️ <span>' + (t("Message maddix", "پیام به maddix")) + '</span></button>' +
+    '</div>' +
+    '<div class="mzpet-view" id="mzViewChat">' +
+      '<div class="mzpet-msgs" id="mzpetMsgs"></div>' +
+      '<div class="mzpet-chips" id="mzpetChips"></div>' +
+      '<form class="mzpet-form" id="mzpetForm">' +
+        '<input class="mzpet-input" id="mzpetInput" type="text" autocomplete="off" maxlength="500" />' +
+        '<button class="mzpet-send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>' +
+      '</form>' +
+    '</div>' +
+    '<div class="mzpet-view" id="mzViewContact" hidden>' +
+      '<form class="mzpet-contact" id="mzContactForm">' +
+        '<p class="mzpet-contact-hint">' + t("Write your message — it goes straight to maddix's Telegram. He'll get back to you!", "پیامت را بنویس — مستقیم به تلگرام maddix میرسد. در اسرع وقت جواب میدهد!") + '</p>' +
+        '<input class="mzpet-field" id="mzCName" type="text" maxlength="80" placeholder="' + t("Your name (optional)", "اسم شما (اختیاری)") + '" />' +
+        '<input class="mzpet-field" id="mzCReply" type="text" maxlength="120" placeholder="' + t("Email / Telegram for reply (optional)", "ایمیل / تلگرام برای پاسخ (اختیاری)") + '" />' +
+        '<textarea class="mzpet-field mzpet-area" id="mzCMsg" rows="4" required placeholder="' + t("Your message...", "پیام شما...") + '"></textarea>' +
+        '<button class="mzpet-send-wide" type="submit" id="mzCSend">📨 ' + t("Send to maddix", "ارسال به maddix") + '</button>' +
+        '<p class="mzpet-contact-ok" id="mzCOk" hidden></p>' +
+      '</form>' +
+    '</div>';
 
   /* shared defs so head avatar reuses body art */
   var defs = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -190,6 +207,66 @@
 
   form.addEventListener("submit", function (e) { e.preventDefault(); send(input.value); });
 
+  /* ---------- contact (message to maddix) ---------- */
+  var tabAi = panel.querySelector("#mzTabAi");
+  var tabContact = panel.querySelector("#mzTabContact");
+  var viewChat = panel.querySelector("#mzViewChat");
+  var viewContact = panel.querySelector("#mzViewContact");
+  var contactForm = panel.querySelector("#mzContactForm");
+  var contactOk = panel.querySelector("#mzCOk");
+  var cSendBtn = panel.querySelector("#mzCSend");
+
+  function switchTab(toContact) {
+    localize();
+    tabAi.classList.toggle("active", !toContact);
+    tabContact.classList.toggle("active", !!toContact);
+    viewChat.hidden = !!toContact;
+    viewContact.hidden = !toContact;
+    if (!toContact) setTimeout(function () { input.focus(); }, 100);
+  }
+  tabAi.addEventListener("click", function () { switchTab(false); });
+  tabContact.addEventListener("click", function () {
+    contactOk.hidden = true;
+    switchTab(true);
+  });
+
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var msg = panel.querySelector("#mzCMsg").value.trim();
+    if (!msg || cSendBtn.disabled) return;
+    cSendBtn.disabled = true;
+    var label = cSendBtn.textContent;
+    cSendBtn.textContent = "⏳ " + t("Sending...", "در حال ارسال...");
+
+    fetch(CONTACT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: panel.querySelector("#mzCName").value.trim().substring(0, 80),
+        reply: panel.querySelector("#mzCReply").value.trim().substring(0, 120),
+        message: msg.substring(0, 1500),
+        page: location.href,
+        lang: document.documentElement.lang === "fa" ? "fa" : "en"
+      })
+    })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok) throw new Error("failed");
+        contactForm.reset();
+        contactOk.textContent = t("✅ Sent! maddix will reply soon.", "✅ ارسال شد! maddix بهزودی جواب میدهد.");
+        contactOk.className = "mzpet-contact-ok ok";
+      })
+      .catch(function () {
+        contactOk.textContent = t("❌ Couldn't send. Try again or email mohammad@iodeck.ir", "❌ ارسال نشد. دوباره امتحان کن یا به mohammad@iodeck.ir ایمیل بزن");
+        contactOk.className = "mzpet-contact-ok err";
+      })
+      .then(function () {
+        contactOk.hidden = false;
+        cSendBtn.disabled = false;
+        cSendBtn.textContent = label;
+      });
+  });
+
   /* ---------- open/close ---------- */
   function open() {
     panel.hidden = false;
@@ -246,10 +323,25 @@
   }, 3800 + Math.floor(Math.random() * 2200));
 
   /* localize static labels on open */
-  var origOpen = open;
-  open = function () {
+  var headSubEl = panel.querySelector("#mzpetHeadSub");
+  var cNameEl = panel.querySelector("#mzCName");
+  var cReplyEl = panel.querySelector("#mzCReply");
+  var cMsgEl = panel.querySelector("#mzCMsg");
+  var cHintEl = panel.querySelector(".mzpet-contact-hint");
+  function localize() {
     headSub.textContent = t("online", "آنلاین");
     input.placeholder = t("Ask me anything...", "هر سؤالی داری بپرس...");
+    tabAi.innerHTML = '🤖 <span>' + t("AI Chat", "چت هوشمند") + '</span>';
+    tabContact.innerHTML = '✉️ <span>' + t("Message maddix", "پیام به maddix") + '</span>';
+    cHintEl.textContent = t("Write your message — it goes straight to maddix's Telegram. He'll get back to you!", "پیامت را بنویس — مستقیم به تلگرام maddix میرسد. در اسرع وقت جواب میدهد!");
+    cNameEl.placeholder = t("Your name (optional)", "اسم شما (اختیاری)");
+    cReplyEl.placeholder = t("Email / Telegram for reply (optional)", "ایمیل / تلگرام برای پاسخ (اختیاری)");
+    cMsgEl.placeholder = t("Your message...", "پیام شما...");
+    cSendBtn.innerHTML = '📨 ' + t("Send to maddix", "ارسال به maddix");
+  }
+  var origOpen = open;
+  open = function () {
+    localize();
     if (!messages.length) msgsEl.innerHTML = "";
     if (!msgsEl.children.length) restore();
     renderChips();
