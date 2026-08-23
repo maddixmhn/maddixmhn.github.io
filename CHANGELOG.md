@@ -4,6 +4,26 @@ Auto-generated from conventional commits.
 
 ### 2026-08-23
 
+Hide Goftino widget (kept for restore); add direct-message-to-maddix tab in MaddyBot with Telegram delivery UI
+
+### 2026-08-23
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update changelog
+
+### 2026-08-23
+
 Add MaddyBot: floating AI pet widget with chat assistant (backend endpoint pending)
 
 ### 2026-08-22
@@ -181,24 +201,4 @@ chore: update CI status
 ### 2026-08-10
 
 chore: update repo stats
-
-### 2026-08-10
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-09
-
-chore: update CI status
-
-### 2026-08-09
-
-chore: update repo stats
-
-### 2026-08-09
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-08
-
-chore: update CI status
 
