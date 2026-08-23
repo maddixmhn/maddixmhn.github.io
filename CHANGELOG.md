@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-08-23
 
+Remove MadiAi placeholder card; BaharAudio goes live with fresh screenshots from server IP (domain pending)
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update changelog
+
+### 2026-08-23
+
 Uniform 1440x1000 certificate canvas (full borders kept, only measured sleeve bands trimmed), grid object-fit contain; remove Netagha & ArcadeX cards; rename widget to Maddix Bot; bridge prompt bilingual update
 
 ### 2026-08-23
@@ -183,22 +199,6 @@ chore: update CI status
 chore: update repo stats
 
 ### 2026-08-15
-
-chore: update CI status
-
-### 2026-08-15
-
-chore: update changelog
-
-### 2026-08-15
-
-Fix portfolio card mismatches: WebStruct rename, netagha/maddixtools image-only
-
-### 2026-08-15
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-14
 
 chore: update CI status
 
