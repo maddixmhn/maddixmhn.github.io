@@ -4,6 +4,22 @@ Auto-generated from conventional commits.
 
 ### 2026-08-23
 
+bridge: add /ai/chat endpoint (Groq gpt-oss-20b with compound-mini fallback, bilingual system prompt, rate limit)
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update changelog
+
+### 2026-08-23
+
 Adaptive white/dark favicon + footer logo mark; certificate lightbox with sleeve-free crops & download deterrents; default theme dark; Netagha marked offline; fresh Shiktak screenshots; README fixes (3D graph paths, trophies, contributors) + achievements page; Telegram two-way bridge (server/ + widget thread UI); Konami party easter egg
 
 ### 2026-08-23
@@ -185,20 +201,4 @@ generated: profile-3d-contrib [skip ci]
 ### 2026-08-13
 
 chore: update CI status
-
-### 2026-08-13
-
-chore: update repo stats
-
-### 2026-08-13
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-12
-
-chore: update CI status
-
-### 2026-08-12
-
-chore: update repo stats
 
