@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: rotate-3d-theme
+  cancel-in-progress: false
+
 jobs:
   rotate:
     runs-on: ubuntu-latest

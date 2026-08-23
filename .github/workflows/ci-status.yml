@@ -7,6 +7,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ci-status-tracker
+  cancel-in-progress: false
+
 jobs:
   track:
     runs-on: ubuntu-latest
@@ -31,7 +35,19 @@ jobs:
             '{workflow: $workflow, conclusion: $conclusion, branch: $branch, status: $status, run_id: ($run_id|tonumber), date: $date}' \
             > data/ci-status.json
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update CI status"
-          file_pattern: data/ci-status.json
+      - name: Commit & push (race-safe)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ci-status.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "chore: update CI status"
+          ok=0
+          for i in 1 2 3 4; do
+            if git pull --rebase --autostash origin main; then
+              if git push origin main; then ok=1; break; fi
+            fi
+            echo "retry $i failed, waiting..."
+            sleep $((i * 8))
+          done
+          [ "$ok" = "1" ] || { echo "push failed after retries"; exit 1; }

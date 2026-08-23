@@ -7,6 +7,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: stats-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -111,7 +115,19 @@ jobs:
             '{date: $date, stars: $stars, forks: $forks, open_issues: $issues, watchers: $watchers, size: $size, last_commit: $date, user: {public_repos: $public_repos, followers: $followers, following: $following, total_stars: $total_stars, total_forks: $total_forks, pull_requests: $pull_requests, contributed_to: $contributed_to, best_streak: $best_streak, last_year_contributions: $last_year}, languages: $languages, contribution_days: $contribution_days, repos: $repos}' \
             > data/stats.json
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update repo stats"
-          file_pattern: data/stats.json
+      - name: Commit & push (race-safe)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/stats.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "chore: update repo stats"
+          ok=0
+          for i in 1 2 3 4; do
+            if git pull --rebase --autostash origin main; then
+              if git push origin main; then ok=1; break; fi
+            fi
+            echo "retry $i failed, waiting..."
+            sleep $((i * 8))
+          done
+          [ "$ok" = "1" ] || { echo "push failed after retries"; exit 1; }
