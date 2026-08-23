@@ -50,8 +50,13 @@ jobs:
           git commit -m "chore: update changelog"
           ok=0
           for i in 1 2 3 4; do
-            if git pull --rebase --autostash origin main; then
+            if git pull --rebase --autostash -X theirs origin main; then
               if git push origin main; then ok=1; break; fi
+            else
+              git rebase --abort 2>/dev/null || true
+              git rebase --quit 2>/dev/null || true
+              echo "rebase conflict; skipping (next trigger refreshes the file)"
+              exit 0
             fi
             echo "retry $i failed, waiting..."
             sleep $((i * 8))
