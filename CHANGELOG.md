@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-08-23
 
+Uniform 1440x1000 certificate canvas (full borders kept, only measured sleeve bands trimmed), grid object-fit contain; remove Netagha & ArcadeX cards; rename widget to Maddix Bot; bridge prompt bilingual update
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update changelog
+
+### 2026-08-23
+
 bridge: add /ai/chat endpoint (Groq gpt-oss-20b with compound-mini fallback, bilingual system prompt, rate limit)
 
 ### 2026-08-23
@@ -44,7 +56,7 @@ chore: update changelog
 
 ### 2026-08-23
 
-Hide Goftino widget (kept for restore); add direct-message-to-maddix tab in Maddix Bot with Telegram delivery UI
+Hide Goftino widget (kept for restore); add direct-message-to-maddix tab in MaddyBot with Telegram delivery UI
 
 ### 2026-08-23
 
@@ -64,7 +76,7 @@ chore: update changelog
 
 ### 2026-08-23
 
-Add Maddix Bot: floating AI pet widget with chat assistant (backend endpoint pending)
+Add MaddyBot: floating AI pet widget with chat assistant (backend endpoint pending)
 
 ### 2026-08-22
 
@@ -187,18 +199,6 @@ Fix portfolio card mismatches: WebStruct rename, netagha/maddixtools image-only
 generated: profile-3d-contrib [skip ci]
 
 ### 2026-08-14
-
-chore: update CI status
-
-### 2026-08-14
-
-chore: update repo stats
-
-### 2026-08-14
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-13
 
 chore: update CI status
 
