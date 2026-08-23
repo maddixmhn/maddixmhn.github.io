@@ -4,6 +4,18 @@ Auto-generated from conventional commits.
 
 ### 2026-08-23
 
+Workflows: -X theirs rebase strategy + non-fatal conflict skip (no more red CI); drop stale package-lock.json (zero-dependency static site) to silence Dependabot security-update failures
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update changelog
+
+### 2026-08-23
+
 Race-safe workflow commits (concurrency groups + rebase/retry push); fresh AlefParvaz screenshots; certificates blur-filled onto uniform canvas (cert-006 complete like others)
 
 ### 2026-08-23
@@ -187,18 +199,6 @@ chore: update CI status
 chore: update repo stats
 
 ### 2026-08-17
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-16
-
-chore: update CI status
-
-### 2026-08-16
-
-chore: update repo stats
-
-### 2026-08-16
 
 generated: profile-3d-contrib [skip ci]
 
