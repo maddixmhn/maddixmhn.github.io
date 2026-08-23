@@ -301,10 +301,10 @@ html[data-theme="light"] .profile-chip i { color: #d49030; }
 .cert-grid picture img,
 .cert-grid img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1440 / 1000;
   border-radius: 0.9rem;
   border: 1px solid var(--stroke);
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 

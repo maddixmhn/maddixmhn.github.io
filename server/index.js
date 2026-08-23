@@ -1,7 +1,7 @@
 /*
  * maddix bridge — tiny zero-dependency Node server
  * Endpoints:
- *   POST /ai/chat               { lang?, messages:[{role,content}] }          -> MaddyBot AI (Groq)
+ *   POST /ai/chat               { lang?, messages:[{role,content}] }          -> Maddix Bot AI (Groq)
  *   POST /ai/contact            { name?, reply?, message, lang?, page?, sid }  -> sends to admin Telegram
  *   GET  /ai/contact/:sid/replies?since=<ts>                                    -> visitor polls for admin replies
  *   GET  /healthz
@@ -32,7 +32,7 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "https://maddixmhn.githu
 const STATE_FILE = path.join(__dirname, "state.json");
 
 const SYSTEM_PROMPT = {
-  en: `You are MaddyBot, the friendly AI assistant on maddix's personal website (maddixmhn.github.io).
+  en: `You are Maddix Bot, the friendly AI assistant on maddix's personal website (maddixmhn.github.io).
 About maddix: Mohammad Mehrani ("maddix"), DevOps Engineer & Cloud Architect based in Iran (Tehran).
 Skills: CI/CD (GitHub Actions, GitLab CI), Docker/Kubernetes, Infrastructure as Code (Terraform, Ansible),
 cloud platforms (AWS/Azure basics), monitoring (Grafana, Prometheus), Linux servers, nginx/Caddy,
@@ -225,7 +225,7 @@ http.createServer(async (req, res) => {
 
   if (url.pathname === "/healthz") return json(res, 200, { ok: true, admin: !!state.adminChatId, ai: !!GROQ_KEY });
 
-  /* MaddyBot AI chat */
+  /* Maddix Bot AI chat */
   if (req.method === "POST" && url.pathname === "/ai/chat") {
     if (!GROQ_KEY) return json(res, 503, { ok: false, error: "ai_disabled" });
     const ip = req.socket.remoteAddress || "?";

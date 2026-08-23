@@ -1,4 +1,4 @@
-/* MaddyBot — floating AI pet widget (ChatGPT-Pets style) */
+/* Maddix Bot — floating AI pet widget (ChatGPT-Pets style) */
 (function () {
   "use strict";
 
@@ -11,8 +11,8 @@
     return (document.documentElement.lang === "fa") ? fa : en;
   }
 
-  var WELCOME_EN = "Hi! I'm MaddyBot 🤖 maddix's little assistant. Ask me anything about his skills, projects or how to reach him!";
-  var WELCOME_FA = "سلام! من میدی‌باتم 🤖 دستیار کوچیک maddix. درباره مهارت‌ها، پروژه‌ها یا راه‌های ارتباطی هر سوالی داری بپرس!";
+  var WELCOME_EN = "Hi! I'm Maddix Bot 🤖 maddix's little assistant. Ask me anything about his skills, projects or how to reach him!";
+  var WELCOME_FA = "سلام! من مدی باتم 🤖 دستیار کوچیک maddix. درباره مهارت‌ها، پروژه‌ها یا راه‌های ارتباطی هر سوالی داری بپرس!";
 
   var SUGGESTIONS = [
     { en: "Who is maddix?", fa: "maddix کیه؟" },
@@ -64,14 +64,14 @@
   var panel = document.createElement("div");
   panel.className = "mzpet-panel";
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "MaddyBot AI assistant");
+  panel.setAttribute("aria-label", "Maddix Bot AI assistant");
   panel.hidden = true;
   panel.innerHTML =
     '<div class="mzpet-head">' +
       '<div class="mzpet-head-avatar"><svg viewBox="0 0 120 120" aria-hidden="true">' +
         '<use href="#mzpetFaceRef"/>' +
       '</svg></div>' +
-      '<div class="mzpet-head-info"><strong>MaddyBot</strong><span class="mzpet-head-sub"><i class="mzpet-online"></i><span id="mzpetHeadSub">online</span></span></div>' +
+      '<div class="mzpet-head-info"><strong>Maddix Bot</strong><span class="mzpet-head-sub"><i class="mzpet-online"></i><span id="mzpetHeadSub">online</span></span></div>' +
       '<button class="mzpet-close" id="mzpetClose" aria-label="Close">&times;</button>' +
     '</div>' +
     '<div class="mzpet-tabs">' +

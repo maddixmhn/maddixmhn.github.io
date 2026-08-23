@@ -44,7 +44,7 @@ chore: update changelog
 
 ### 2026-08-23
 
-Hide Goftino widget (kept for restore); add direct-message-to-maddix tab in MaddyBot with Telegram delivery UI
+Hide Goftino widget (kept for restore); add direct-message-to-maddix tab in Maddix Bot with Telegram delivery UI
 
 ### 2026-08-23
 
@@ -64,7 +64,7 @@ chore: update changelog
 
 ### 2026-08-23
 
-Add MaddyBot: floating AI pet widget with chat assistant (backend endpoint pending)
+Add Maddix Bot: floating AI pet widget with chat assistant (backend endpoint pending)
 
 ### 2026-08-22
 
