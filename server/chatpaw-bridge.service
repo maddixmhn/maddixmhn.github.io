@@ -1,0 +1,19 @@
+[Unit]
+Description=maddix bridge (site <-> telegram)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/maddix-bridge
+EnvironmentFile=/opt/maddix-bridge/.env
+ExecStart=/usr/bin/node /opt/maddix-bridge/index.js
+Restart=always
+RestartSec=5
+User=www-data
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/maddix-bridge
+
+[Install]
+WantedBy=multi-user.target

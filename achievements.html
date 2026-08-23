@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Achievements & Medals · maddix</title>
+  <meta name="description" content="GitHub achievements, trophies and medals of maddix — DevOps Engineer." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <style>
+    :root { --bg:#0d1f26; --bg2:#122b34; --text:#e6f1ef; --muted:#8fb0aa; --stroke:rgba(255,255,255,.08); --accent:#1fe0b5; --accent2:#1ba5ff; }
+    html[data-theme="light"] { --bg:#f7f9fa; --bg2:#ffffff; --text:#1a2b30; --muted:#5a7a74; --stroke:rgba(0,0,0,.09); }
+    body { background: var(--bg); color: var(--text); font-family: Inter, Vazirmatn, system-ui, sans-serif; min-height: 100vh; transition: background .3s, color .3s; }
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); opacity:.25; pointer-events:none; z-index:0; }
+    .orb1 { width:420px; height:420px; background:#1fe0b5; top:-120px; left:-100px; }
+    .orb2 { width:380px; height:380px; background:#1ba5ff; bottom:-120px; right:-80px; }
+    .wrap { position:relative; z-index:1; max-width:1080px; margin:0 auto; padding:3rem 1.25rem 4rem; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; }
+    .brand { font-weight:800; font-size:1.15rem; text-decoration:none; color:var(--text);
+      background:linear-gradient(135deg,#1fe0b5,#1ba5ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .btn-t { border:1px solid var(--stroke); background:var(--bg2); color:var(--text); border-radius:10px; padding:.45rem .9rem; font-size:.85rem; cursor:pointer; }
+    h1 { font-weight:900; letter-spacing:-.02em; }
+    h1 span { background:linear-gradient(135deg,#1fe0b5,#1ba5ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .sub { color:var(--muted); max-width:640px; }
+    section { margin-top:2.75rem; }
+    section > h2 { font-size:1.05rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; display:flex; gap:.5rem; align-items:center; }
+    section > h2::after { content:""; flex:1; height:1px; background:var(--stroke); }
+    .panel { background:var(--bg2); border:1px solid var(--stroke); border-radius:1rem; padding:1rem; overflow:hidden; }
+    .panel img { max-width:100%; display:block; margin:0 auto; }
+    .medal-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1rem; }
+    .medal { background:var(--bg2); border:1px solid var(--stroke); border-radius:1rem; padding:1.1rem; text-align:center; transition:transform .2s, box-shadow .2s; }
+    .medal:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,.35); }
+    .medal i { font-size:1.9rem; background:linear-gradient(135deg,#1fe0b5,#1ba5ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .medal b { display:block; margin-top:.5rem; font-size:.95rem; }
+    .medal small { color:var(--muted); }
+    footer { text-align:center; color:var(--muted); margin-top:3.5rem; font-size:.85rem; }
+    footer a { color:var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="/">⌂ maddix</a>
+      <button class="btn-t" id="themeBtn"><i class="bi bi-sun"></i></button>
+    </div>
+
+    <h1>Medals &amp; <span>Achievements</span></h1>
+    <p class="sub">Live badges pulled straight from GitHub — refreshed every time this page loads.</p>
+
+    <section>
+      <h2>🏆 GitHub Trophies</h2>
+      <div class="panel">
+        <img src="https://github-profile-trophy.vercel.app/?username=maddixmhn&theme=transparent&no-frame=true&no-bg=true&column=7&margin-w=8" alt="GitHub profile trophies" />
+      </div>
+    </section>
+
+    <section>
+      <h2>🥇 Ranks & Stats</h2>
+      <div class="panel">
+        <img src="https://github-readme-stats.vercel.app/api?username=maddixmhn&show_icons=true&hide_border=true&theme=transparent&rank_icon=github" alt="GitHub stats with ranks" />
+        &nbsp;
+        <img src="https://streak-stats.demolab.com/?user=maddixmhn&theme=transparent&hide_border=true" alt="Streak stats" />
+      </div>
+    </section>
+
+    <section>
+      <h2>🎖️ Highlight Medals</h2>
+      <div class="medal-grid">
+        <div class="medal"><i class="bi bi-lightning-charge-fill"></i><b>Streak Champion</b><small>Long commit streaks, no gaps</small></div>
+        <div class="medal"><i class="bi bi-stars"></i><b>Rank A+ Hunter</b><small>Top-tier GitHub profile score</small></div>
+        <div class="medal"><i class="bi bi-cloud-arrow-up-fill"></i><b>Ship Master</b><small>Production systems in the wild</small></div>
+        <div class="medal"><i class="bi bi-diagram-3-fill"></i><b>Architect's Eye</b><small>Infra design at scale</small></div>
+        <div class="medal"><i class="bi bi-moon-stars-fill"></i><b>Night Builder</b><small>Most commits after midnight</small></div>
+        <div class="medal"><i class="bi bi-shield-check"></i><b>Uptime Keeper</b><small>Reliability as a lifestyle</small></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🌄 3D Skyline</h2>
+      <div class="panel">
+        <img src="https://raw.githubusercontent.com/maddixmhn/maddixmhn.github.io/main/profile-3d-contrib/graphite-dark.svg" alt="3D contribution skyline" />
+      </div>
+    </section>
+
+    <footer>Part of <a href="https://maddixmhn.github.io">maddixmhn.github.io</a> · automated by GitHub Actions</footer>
+  </div>
+
+  <script>
+    const KEY = "site_theme";
+    const btn = document.getElementById("themeBtn");
+    const saved = localStorage.getItem(KEY) || "dark";
+    document.documentElement.setAttribute("data-theme", saved);
+    btn.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem(KEY, next);
+      btn.innerHTML = next === "dark" ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon-stars"></i>';
+    });
+    btn.innerHTML = saved === "dark" ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon-stars"></i>';
+  </script>
+</body>
+</html>

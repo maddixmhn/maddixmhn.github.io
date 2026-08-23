@@ -83,6 +83,9 @@
       project_3_desc: "Metrics, logs, alerts, and dashboards to reduce MTTR and improve reliability.",
       certs_title: "Certifications",
       certs_desc: "Recent certifications and training records.",
+      certs_prev: "Previous certificate",
+      certs_next: "Next certificate",
+      certs_close: "Close viewer",
       contact_title: "Contact",
       contact_desc: "For collaboration, consulting, or full-time opportunities, send a message.",
       form_name: "Name",
@@ -118,6 +121,7 @@
       portfolio_title: "Portfolio",
       portfolio_desc: "Platforms, websites and applications designed and delivered.",
       portfolio_coming: "Coming Soon",
+      portfolio_offline: "Temporarily Offline",
       portfolio_loading: "Loading website...",
       portfolio_blocked: "Site blocked iframe, opening in new tab..."
     },
@@ -204,6 +208,9 @@
       project_3_desc: "\u0645\u062a\u0631\u06cc\u06a9\u060c \u0644\u0627\u06af\u060c \u0647\u0634\u062f\u0627\u0631 \u0648 \u062f\u0627\u0634\u0628\u0648\u0631\u062f \u0628\u0631\u0627\u06cc \u06a9\u0627\u0647\u0634 \u0632\u0645\u0627\u0646 \u0631\u0641\u0639 \u062e\u0637\u0627 \u0648 \u0627\u0641\u0632\u0627\u06cc\u0634 \u067e\u0627\u06cc\u062f\u0627\u0631\u06cc.",
       certs_title: "\u06af\u0648\u0627\u0647\u06cc\u0646\u0627\u0645\u0647 \u0647\u0627",
       certs_desc: "\u0622\u062e\u0631\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0647\u0627 \u0648 \u06af\u0648\u0627\u0647\u06cc\u0646\u0627\u0645\u0647 \u0647\u0627\u06cc \u062d\u0631\u0641\u0647 \u0627\u06cc.",
+      certs_prev: "\u06af\u0648\u0627\u0647\u06cc\u0646\u0627\u0645\u0647 \u0642\u0628\u0644\u06cc",
+      certs_next: "\u06af\u0648\u0627\u0647\u06cc\u0646\u0627\u0645\u0647 \u0628\u0639\u062f\u06cc",
+      certs_close: "\u0628\u0633\u062a\u0646 \u0646\u0645\u0627\u06cc\u0646\u062f\u0647",
       contact_title: "\u062a\u0645\u0627\u0633",
       contact_desc: "\u0628\u0631\u0627\u06cc \u0647\u0645\u06a9\u0627\u0631\u06cc\u060c \u0645\u0634\u0627\u0648\u0631\u0647 \u06cc\u0627 \u0641\u0631\u0635\u062a \u0647\u0627\u06cc \u0634\u063a\u0644\u06cc \u067e\u06cc\u0627\u0645 \u0628\u0641\u0631\u0633\u062a\u06cc\u062f.",
       form_name: "\u0646\u0627\u0645",
@@ -239,6 +246,7 @@
       portfolio_title: "\u0646\u0645\u0648\u0646\u0647 \u06a9\u0627\u0631\u0647\u0627",
       portfolio_desc: "\u067e\u0644\u062a\u0641\u0631\u0645\u200c\u0647\u0627\u060c \u0633\u0627\u06cc\u062a\u200c\u0647\u0627 \u0648 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0637\u0631\u0627\u062d\u06cc \u0648 \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u0634\u062f\u0647.",
       portfolio_coming: "\u0628\u0647\u200c\u0632\u0648\u062f\u06cc",
+      portfolio_offline: "\u0645\u0648\u0642\u062a\u0627 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644",
       portfolio_loading: "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0633\u0627\u06cc\u062a...",
       portfolio_blocked: "\u0633\u0627\u06cc\u062a \u0646\u0645\u062a\u0648\u0627\u0646\u0633\u062a \u062f\u0631 iframe \u0628\u0627\u0631 \u0634\u0648\u062f\u060c \u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u062f\u0631 \u062a\u0627\u0628 \u062c\u062f\u06cc\u062f..."
     }
@@ -356,6 +364,8 @@
     document.documentElement.lang = safeLang;
     document.documentElement.dir = safeLang === "fa" ? "rtl" : "ltr";
 
+    window.dispatchEvent(new Event("languagechange"));
+
     i18nNodes.forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (tr[key]) el.textContent = tr[key];
@@ -383,9 +393,7 @@
     applyTheme(currentTheme === "dark" ? "light" : "dark");
   });
 
-  const preferredTheme =
-    getStored(THEME_KEY) ||
-    (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  const preferredTheme = getStored(THEME_KEY) || "dark";
   applyTheme(preferredTheme);
 
   const preferredLang = getStored(LANG_KEY) || "en";
@@ -1295,4 +1303,82 @@
       window.open("https://mail.google.com/mail/?view=cm&fs=1&to=mohammad@iodeck.ir&su=" + subj + "&body=" + body, "_blank");
     });
   }
+
+  /* ——— Certificate lightbox ——— */
+  (function initCertbox() {
+    const grid = document.getElementById("certGrid");
+    const box = document.getElementById("certbox");
+    if (!grid || !box) return;
+
+    const view = document.getElementById("certboxView");
+    const titleEl = document.getElementById("certboxTitle");
+    const countEl = document.getElementById("certboxCount");
+    const items = Array.from(grid.querySelectorAll("picture[data-cert]"));
+    let idx = 0;
+    let lastFocus = null;
+
+    const tr = () => (dict[currentLang] || dict.en);
+
+    function show(i) {
+      idx = (i + items.length) % items.length;
+      const img = items[idx].querySelector("img");
+      const bigSrc = (img.currentSrc || img.src).replace(/\.webp(\?|$)/, ".jpg$1");
+      const probe = new Image();
+      probe.onload = () => {
+        view.style.setProperty("--ar", (probe.naturalWidth / probe.naturalHeight).toFixed(4));
+      };
+      probe.src = bigSrc;
+      view.style.backgroundImage = 'url("' + bigSrc + '")';
+      titleEl.textContent = img.alt || tr().certs_title;
+      countEl.textContent = (idx + 1) + " / " + items.length;
+      // re-trigger pop animation
+      view.style.animation = "none";
+      void view.offsetWidth;
+      view.style.animation = "";
+    }
+
+    function open(i) {
+      lastFocus = document.activeElement;
+      box.hidden = false;
+      document.body.style.overflow = "hidden";
+      show(i);
+      document.getElementById("certboxClose").focus();
+    }
+
+    function close() {
+      box.hidden = true;
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    }
+
+    items.forEach((pic) => {
+      const i = parseInt(pic.getAttribute("data-cert"), 10);
+      pic.addEventListener("click", () => open(i));
+      pic.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(i); }
+      });
+      pic.addEventListener("contextmenu", (e) => e.preventDefault());
+    });
+
+    document.getElementById("certboxPrev").addEventListener("click", () => show(idx - 1));
+    document.getElementById("certboxNext").addEventListener("click", () => show(idx + 1));
+    document.getElementById("certboxClose").addEventListener("click", close);
+    box.addEventListener("contextmenu", (e) => e.preventDefault());
+
+    document.addEventListener("keydown", (e) => {
+      if (box.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(idx - 1);
+      else if (e.key === "ArrowRight") show(idx + 1);
+    });
+
+    // localize aria labels
+    window.addEventListener("languagechange", () => {
+      const t = tr();
+      document.getElementById("certboxPrev").setAttribute("aria-label", t.certs_prev);
+      document.getElementById("certboxNext").setAttribute("aria-label", t.certs_next);
+      document.getElementById("certboxClose").setAttribute("aria-label", t.certs_close);
+      if (!box.hidden) titleEl.textContent = items[idx].querySelector("img").alt;
+    });
+  })();
 })();

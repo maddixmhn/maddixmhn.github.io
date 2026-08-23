@@ -228,7 +228,67 @@
   tabContact.addEventListener("click", function () {
     contactOk.hidden = true;
     switchTab(true);
+    startReplyPolling();
   });
+
+  /* ---------- two-way thread with maddix (telegram bridge) ---------- */
+  var SID_KEY = "maddybot-sid";
+  var LAST_TS_KEY = "maddybot-lastts";
+  var sid = "";
+  var lastTs = parseInt(localStorage.getItem(LAST_TS_KEY) || "0", 10) || 0;
+  try {
+    sid = localStorage.getItem(SID_KEY);
+    if (!sid || !/^[a-z0-9]{6,16}$/.test(sid)) {
+      sid = Math.random().toString(36).slice(2, 12);
+      localStorage.setItem(SID_KEY, sid);
+    }
+  } catch (e) { sid = "s" + Date.now().toString(36); }
+
+  var threadEl = document.createElement("div");
+  threadEl.className = "mzpet-thread";
+  threadEl.setAttribute("aria-live", "polite");
+  var contactView = panel.querySelector("#mzViewContact");
+  contactView.insertBefore(threadEl, contactForm);
+
+  function addThreadBubble(from, text) {
+    var b = document.createElement("div");
+    b.className = "mzpet-tbubble " + from;
+    b.textContent = text;
+    threadEl.appendChild(b);
+    threadEl.scrollTop = threadEl.scrollHeight;
+    while (threadEl.children.length > 30) threadEl.removeChild(threadEl.firstChild);
+  }
+
+  var pollTimer = null;
+  function pollReplies() {
+    fetch(CONTACT_ENDPOINT.replace(/\/contact$/, "/contact/" + sid + "/replies?since=" + lastTs))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || !d.ok || !d.replies || !d.replies.length) return;
+        d.replies.forEach(function (m) {
+          if (m.ts <= lastTs) return;
+          lastTs = m.ts;
+          addThreadBubble("maddix", m.text);
+        });
+        localStorage.setItem(LAST_TS_KEY, String(lastTs));
+        persistThread();
+      })
+      .catch(function () {});
+  }
+  function startReplyPolling() {
+    pollReplies();
+    if (!pollTimer) pollTimer = setInterval(pollReplies, 8000);
+  }
+
+  /* restore past thread on load */
+  (function restoreThread() {
+    var saved = [];
+    try {
+      saved = JSON.parse(localStorage.getItem("maddybot-thread") || "[]");
+      if (!Array.isArray(saved)) saved = [];
+    } catch (e) {}
+    saved.slice(-20).forEach(function (m) { addThreadBubble(m.from, m.text); });
+  })();
 
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -246,15 +306,19 @@
         reply: panel.querySelector("#mzCReply").value.trim().substring(0, 120),
         message: msg.substring(0, 1500),
         page: location.href,
-        lang: document.documentElement.lang === "fa" ? "fa" : "en"
+        lang: document.documentElement.lang === "fa" ? "fa" : "en",
+        sid: sid
       })
     })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) {
         if (!d || !d.ok) throw new Error("failed");
         contactForm.reset();
-        contactOk.textContent = t("✅ Sent! maddix will reply soon.", "✅ ارسال شد! maddix بهزودی جواب میدهد.");
+        addThreadBubble("visitor", msg);
+        persistThread();
+        contactOk.textContent = t("✅ Sent! maddix gets it instantly — his reply appears right here.", "✅ ارسال شد! همان لحظه به maddix میرسد — پاسخش همینجا نمایش داده میشود.");
         contactOk.className = "mzpet-contact-ok ok";
+        startReplyPolling();
       })
       .catch(function () {
         contactOk.textContent = t("❌ Couldn't send. Try again or email mohammad@iodeck.ir", "❌ ارسال نشد. دوباره امتحان کن یا به mohammad@iodeck.ir ایمیل بزن");
@@ -266,6 +330,13 @@
         cSendBtn.textContent = label;
       });
   });
+
+  function persistThread() {
+    var arr = Array.prototype.map.call(threadEl.children, function (b) {
+      return { from: b.classList.contains("maddix") ? "maddix" : "visitor", text: b.textContent };
+    });
+    try { localStorage.setItem("maddybot-thread", JSON.stringify(arr)); } catch (e) {}
+  }
 
   /* ---------- open/close ---------- */
   function open() {
@@ -354,5 +425,35 @@
     persist();
     msgsEl.innerHTML = "";
     bubble("assistant", t(WELCOME_EN, WELCOME_FA));
+  });
+
+  /* ---------- konami easter egg: pet party! ---------- */
+  var KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  var kIdx = 0;
+  document.addEventListener("keydown", function (e) {
+    var k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    kIdx = (k === KONAMI[kIdx]) ? kIdx + 1 : (k === KONAMI[0] ? 1 : 0);
+    if (kIdx !== KONAMI.length) return;
+    kIdx = 0;
+    root.classList.add("party");
+    showTeaser();
+    teaser.textContent = t("🎉 Party mode!! You found the secret!", "🎉 حالت پارتی!! راز رو پیدا کردی!");
+    var colors = ["#1fe0b5", "#1ba5ff", "#ffc857", "#ff6bd6", "#8cff6b"];
+    for (var i = 0; i < 26; i++) {
+      (function (i) {
+        setTimeout(function () {
+          var p = document.createElement("span");
+          p.className = "mzpet-confetti";
+          p.style.left = (btn.getBoundingClientRect().left + btn.offsetWidth / 2) + "px";
+          p.style.top = (btn.getBoundingClientRect().top + 10) + "px";
+          p.style.background = colors[i % colors.length];
+          p.style.setProperty("--dx", (Math.random() * 220 - 110) + "px");
+          p.style.setProperty("--dy", -(60 + Math.random() * 160) + "px");
+          document.body.appendChild(p);
+          setTimeout(function () { p.remove(); }, 1300);
+        }, i * 55);
+      })(i);
+    }
+    setTimeout(function () { root.classList.remove("party"); }, 6000);
   });
 })();

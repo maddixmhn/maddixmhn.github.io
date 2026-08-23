@@ -567,6 +567,51 @@ html[dir="rtl"] .pb-url { margin-left: 0; margin-right: auto; }
 }
 .portfolio-info i { color: var(--accent); font-size: 1rem; }
 
+/* ——— Certificate grid interactions ——— */
+#certGrid picture { cursor: zoom-in; transition: transform 0.25s ease, box-shadow 0.25s ease; border-radius: 0.6rem; }
+#certGrid picture:hover, #certGrid picture:focus-visible { transform: translateY(-3px) scale(1.015); box-shadow: 0 10px 30px rgba(0,0,0,0.35); outline: none; }
+#certGrid img { user-select: none; -webkit-user-drag: none; pointer-events: none; }
+
+/* ——— Certificate Lightbox ——— */
+.certbox { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+.certbox[hidden] { display: none; }
+.certbox-backdrop { position: absolute; inset: 0; background: rgba(4,10,14,0.88); backdrop-filter: blur(10px); }
+.certbox-stage { position: relative; margin: 0; width: min(94vw, 1100px); height: min(88vh, 850px); display: flex; align-items: center; justify-content: center; }
+.certbox-shield { position: absolute; inset: -14px; z-index: 1; }
+.certbox-view {
+  position: relative; z-index: 2;
+  width: min(100%, calc((88vh - 56px) * var(--ar, 1.45)));
+  height: auto; aspect-ratio: var(--ar, 1.45);
+  background-size: contain; background-repeat: no-repeat; background-position: center;
+  filter: drop-shadow(0 24px 60px rgba(0,0,0,0.55));
+  animation: cert-pop 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+@keyframes cert-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+.certbox-caption {
+  position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+  color: #cfe3df; font-size: 0.85rem; letter-spacing: 0.02em;
+  background: rgba(10,20,26,0.65); padding: 0.35rem 0.9rem; border-radius: 999px;
+  white-space: nowrap; z-index: 3;
+}
+.certbox-btn {
+  position: absolute; z-index: 4;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(16,32,40,0.75); color: #eaf6f3;
+  font-size: 1.5rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+}
+.certbox-btn:hover { background: rgba(31,224,181,0.25); transform: scale(1.06); }
+.certbox-prev { left: 10px; top: 50%; margin-top: -23px; }
+.certbox-next { right: 10px; top: 50%; margin-top: -23px; }
+.certbox-close { right: 10px; top: 10px; font-size: 1.7rem; }
+
+/* ——— Footer logo mark ——— */
+.footer-logo { height: 20px; width: auto; vertical-align: -4px; margin-inline-start: 0.45rem; opacity: 0.95; }
+html[data-theme="light"] .footer-logo:not(.footer-logo-dark) { display: none; }
+html[data-theme="dark"] .footer-logo-dark { display: none; }
+
 /* ——— Portfolio Modal / Browser Popup ——— */
 .portfolio-modal {
   display: none;

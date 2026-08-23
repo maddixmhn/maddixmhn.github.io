@@ -14,7 +14,7 @@ graph TB
 ```
 
 <p align="center">
-  <img alt="3D contribution graph" src="https://raw.githubusercontent.com/maddixmhn/mohammadmehrani/main/profile-3d-contrib/profile-night-rainbow.svg" width="90%" />
+  <img alt="3D contribution graph" src="https://raw.githubusercontent.com/maddixmhn/maddixmhn.github.io/main/profile-3d-contrib/profile-night-rainbow.svg" width="90%" />
 </p>
 
 <p align="center">
@@ -84,11 +84,21 @@ about_me:
 </p>
 
 <p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=maddixmhn&theme=transparent&no-frame=true&no-bg=true&column=7&margin-w=8" alt="GitHub trophies" width="98%" />
+</p>
+
+<p align="center">
+  <a href="https://maddixmhn.github.io/achievements">
+    <img src="https://img.shields.io/badge/%F0%9F%8F%85_Medals_%26_Achievements-View_Full_Page-6f42c1?style=flat-square" alt="Medals page" />
+  </a>
+</p>
+
+<p align="center">
   <img src="https://streak-stats.demolab.com/?user=maddixmhn&theme=transparent&hide_border=true" alt="GitHub streak" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/maddixmhn/mohammadmehrani/main/profile-3d-contrib/graphite-dark.svg" alt="3D contribution graph animated" width="90%" />
+  <img src="https://raw.githubusercontent.com/maddixmhn/maddixmhn.github.io/main/profile-3d-contrib/graphite-dark.svg" alt="3D contribution graph animated" width="90%" />
 </p>
 
 <details>
@@ -127,6 +137,13 @@ about_me:
 </details>
 
 <br>
+
+<p align="center">
+  <b>🤝 Contributors</b><br><br>
+  <a href="https://github.com/maddixmhn/maddixmhn.github.io/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=maddixmhn/maddixmhn.github.io&anon=1" alt="Contributors" />
+  </a>
+</p>
 
 ```text
 ⚙️ Automated Workflow Pipeline

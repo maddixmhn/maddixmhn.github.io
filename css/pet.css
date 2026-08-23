@@ -185,6 +185,28 @@ html[data-theme="light"] .mzpet-head { background: linear-gradient(135deg, rgba(
   border-color: var(--stroke);
 }
 html[data-theme="light"] .mzpet-tab.active { color: #b04a1e; background: rgba(224, 96, 48, 0.07); }
+/* konami party mode */
+.mzpet-root.party .mzpet-body { animation: mz-bob 0.5s ease-in-out infinite, mz-hop 0.9s ease-in-out infinite; }
+.mzpet-root.party .mzpet-face-grad,
+.mzpet-root.party svg stop:first-child { animation: hue-spin 2s linear infinite; }
+@keyframes hue-spin {
+  from { stop-color: #1fe0b5; }
+  50% { stop-color: #ff6bd6; }
+  to { stop-color: #ffc857; }
+}
+.mzpet-confetti {
+  position: fixed;
+  z-index: 9700;
+  width: 9px;
+  height: 13px;
+  border-radius: 3px;
+  pointer-events: none;
+  animation: mz-fly 1.25s cubic-bezier(0.16, 0.8, 0.4, 1) forwards;
+}
+@keyframes mz-fly {
+  from { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  to { transform: translate(var(--dx), calc(var(--dy) + 240px)) rotate(540deg); opacity: 0; }
+}
 html[dir="rtl"] .mzpet-tabs { direction: rtl; }
 
 .mzpet-view {
@@ -251,6 +273,41 @@ html[data-theme="light"] .mzpet-send-wide { color: #fff; }
 }
 .mzpet-contact-ok.ok { color: var(--accent); }
 .mzpet-contact-ok.err { color: #ff6b6b; }
+
+/* live thread (telegram bridge) */
+.mzpet-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 2px 14px 0;
+}
+.mzpet-thread:not(:empty) { margin-bottom: 4px; }
+.mzpet-tbubble {
+  max-width: 85%;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  padding: 7px 11px;
+  border-radius: 12px;
+  animation: mz-pop 0.25s ease;
+  word-break: break-word;
+}
+.mzpet-tbubble.visitor {
+  align-self: flex-end;
+  background: rgba(31, 224, 181, 0.16);
+  border: 1px solid rgba(31, 224, 181, 0.25);
+  color: var(--text);
+  border-bottom-right-radius: 4px;
+}
+html[data-theme="light"] .mzpet-tbubble.visitor { background: rgba(224, 96, 48, 0.1); border-color: rgba(224, 96, 48, 0.22); }
+.mzpet-tbubble.maddix {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--stroke);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
 
 /* messages */
 .mzpet-msgs {
