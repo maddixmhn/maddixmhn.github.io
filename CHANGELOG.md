@@ -4,6 +4,30 @@ Auto-generated from conventional commits.
 
 ### 2026-08-23
 
+Adaptive white/dark favicon + footer logo mark; certificate lightbox with sleeve-free crops & download deterrents; default theme dark; Netagha marked offline; fresh Shiktak screenshots; README fixes (3D graph paths, trophies, contributors) + achievements page; Telegram two-way bridge (server/ + widget thread UI); Konami party easter egg
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update repo stats
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update CI status
+
+### 2026-08-23
+
+chore: update changelog
+
+### 2026-08-23
+
 Hide Goftino widget (kept for restore); add direct-message-to-maddix tab in MaddyBot with Telegram delivery UI
 
 ### 2026-08-23
@@ -175,30 +199,6 @@ generated: profile-3d-contrib [skip ci]
 chore: update CI status
 
 ### 2026-08-12
-
-chore: update repo stats
-
-### 2026-08-12
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-11
-
-chore: update CI status
-
-### 2026-08-11
-
-chore: update repo stats
-
-### 2026-08-11
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-08-10
-
-chore: update CI status
-
-### 2026-08-10
 
 chore: update repo stats
 
