@@ -1,8 +1,8 @@
 {
-  "workflow": "Stats Sync",
+  "workflow": "CI",
   "conclusion": "success",
-  "branch": "main",
+  "branch": "claude/chatgpt-cli-setup-urmmhl",
   "status": "completed",
-  "run_id": 36423445443,
-  "date": "2026-09-28T12:41:53Z"
+  "run_id": 36460814453,
+  "date": "2026-09-28T17:49:20Z"
 }
