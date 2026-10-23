@@ -2,203 +2,203 @@
 
 Auto-generated from conventional commits.
 
-### 2026-08-23
+### 2026-10-23
 
-Workflows: -X theirs rebase strategy + non-fatal conflict skip (no more red CI); drop stale package-lock.json (zero-dependency static site) to silence Dependabot security-update failures
+Connect Claude Code and Codex CLI (cloud hook + Windows setup kit)
+* Add Codex CLI setup hook, ask-codex wrapper and codex skill
 
-### 2026-08-23
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N4JPuEw51vHb9DHSSYwx6q
 
-chore: update CI status
+* Add Windows setup kit connecting Claude Code and Codex
 
-### 2026-08-23
+setup.ps1 installs Codex CLI, turns on ssh-agent, signs Codex in to the
+owner's own account, installs the codex skill and a shared working
+agreement for both agents, then health-tests both with a real answer.
+No credentials are read, copied or stored.
 
-chore: update changelog
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01N4JPuEw51vHb9DHSSYwx6q
 
-### 2026-08-23
+---------
 
-Race-safe workflow commits (concurrency groups + rebase/retry push); fresh AlefParvaz screenshots; certificates blur-filled onto uniform canvas (cert-006 complete like others)
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update changelog
-
-### 2026-08-23
-
-Remove MadiAi placeholder card; BaharAudio goes live with fresh screenshots from server IP (domain pending)
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update changelog
-
-### 2026-08-23
-
-Uniform 1440x1000 certificate canvas (full borders kept, only measured sleeve bands trimmed), grid object-fit contain; remove Netagha & ArcadeX cards; rename widget to Maddix Bot; bridge prompt bilingual update
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update changelog
-
-### 2026-08-23
-
-bridge: add /ai/chat endpoint (Groq gpt-oss-20b with compound-mini fallback, bilingual system prompt, rate limit)
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update changelog
-
-### 2026-08-23
-
-Adaptive white/dark favicon + footer logo mark; certificate lightbox with sleeve-free crops & download deterrents; default theme dark; Netagha marked offline; fresh Shiktak screenshots; README fixes (3D graph paths, trophies, contributors) + achievements page; Telegram two-way bridge (server/ + widget thread UI); Konami party easter egg
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update repo stats
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update changelog
-
-### 2026-08-23
-
-Hide Goftino widget (kept for restore); add direct-message-to-maddix tab in MaddyBot with Telegram delivery UI
-
-### 2026-08-23
+Co-authored-by: Claude <noreply@anthropic.com>
+### 2026-10-23
 
 generated: profile-3d-contrib [skip ci]
 
-### 2026-08-23
+### 2026-10-22
 
 chore: update CI status
 
-### 2026-08-23
-
-chore: update CI status
-
-### 2026-08-23
-
-chore: update changelog
-
-### 2026-08-23
-
-Add MaddyBot: floating AI pet widget with chat assistant (backend endpoint pending)
-
-### 2026-08-22
-
-chore: update CI status
-
-### 2026-08-22
+### 2026-10-22
 
 chore: update repo stats
 
-### 2026-08-22
+### 2026-10-22
 
 generated: profile-3d-contrib [skip ci]
 
-### 2026-08-21
+### 2026-10-21
 
 chore: update CI status
 
-### 2026-08-21
+### 2026-10-21
 
 chore: update repo stats
 
-### 2026-08-21
+### 2026-10-21
 
 generated: profile-3d-contrib [skip ci]
 
-### 2026-08-20
+### 2026-10-20
 
 chore: update CI status
 
-### 2026-08-20
-
-chore: update changelog
-
-### 2026-08-20
-
-Add 2026 resume PDF, fix download button; add Kurt Viana, ArcadeX, BaharAudio portfolio cards
-
-### 2026-08-20
-
-chore: update CI status
-
-### 2026-08-20
+### 2026-10-20
 
 chore: update repo stats
 
-### 2026-08-20
+### 2026-10-20
 
 generated: profile-3d-contrib [skip ci]
 
-### 2026-08-19
+### 2026-10-19
 
 chore: update CI status
 
-### 2026-08-19
+### 2026-10-19
 
 chore: update repo stats
 
-### 2026-08-19
+### 2026-10-19
 
 generated: profile-3d-contrib [skip ci]
 
-### 2026-08-18
+### 2026-10-18
 
 chore: update CI status
 
-### 2026-08-18
+### 2026-10-18
 
 chore: update repo stats
 
-### 2026-08-18
+### 2026-10-18
 
 generated: profile-3d-contrib [skip ci]
 
-### 2026-08-17
+### 2026-10-17
 
 chore: update CI status
 
-### 2026-08-17
+### 2026-10-17
 
 chore: update repo stats
 
-### 2026-08-17
+### 2026-10-17
 
 generated: profile-3d-contrib [skip ci]
 
+### 2026-10-17
+
+chore: update CI status
+
+### 2026-10-16
+
+chore: update CI status
+
+### 2026-10-16
+
+chore: update repo stats
+
+### 2026-10-16
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-15
+
+chore: update CI status
+
+### 2026-10-15
+
+chore: update repo stats
+
+### 2026-10-15
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-14
+
+chore: update CI status
+
+### 2026-10-14
+
+chore: update repo stats
+
+### 2026-10-14
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-13
+
+chore: update CI status
+
+### 2026-10-13
+
+chore: update repo stats
+
+### 2026-10-13
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-12
+
+chore: update CI status
+
+### 2026-10-12
+
+chore: update repo stats
+
+### 2026-10-12
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-11
+
+chore: update CI status
+
+### 2026-10-11
+
+chore: update repo stats
+
+### 2026-10-11
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-10
+
+chore: update CI status
+
+### 2026-10-10
+
+chore: update repo stats
+
+### 2026-10-10
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-09
+
+chore: update CI status
+
+### 2026-10-09
+
+chore: update repo stats
+
+### 2026-10-09
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-08
+
+chore: update CI status
