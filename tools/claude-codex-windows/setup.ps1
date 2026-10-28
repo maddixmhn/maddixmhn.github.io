@@ -96,10 +96,22 @@ if (-not $agent) {
 }
 
 # 3. Codex sign-in -------------------------------------------------------
+# Always route Codex traffic directly unless the caller passes -Proxy.
+# Clear any ambient proxy that might block api.openai.com.
 if ($Proxy) {
     $env:HTTPS_PROXY = $Proxy
-    $env:HTTP_PROXY = $Proxy
+    $env:HTTP_PROXY  = $Proxy
     Ok "using proxy $Proxy for this run"
+} else {
+    foreach ($v in @('HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','http_proxy','https_proxy','all_proxy')) {
+        if ([Environment]::GetEnvironmentVariable($v, 'Process')) {
+            [Environment]::SetEnvironmentVariable($v, $null, 'Process')
+        }
+    }
+    $bypass = 'api.openai.com,*.openai.com,openai.com'
+    [Environment]::SetEnvironmentVariable('NO_PROXY', $bypass, 'Process')
+    [Environment]::SetEnvironmentVariable('no_proxy', $bypass, 'Process')
+    Ok 'proxy cleared for this session; openai.com is direct'
 }
 if (Get-Command codex -ErrorAction SilentlyContinue) {
     Step 'Checking Codex sign-in'
