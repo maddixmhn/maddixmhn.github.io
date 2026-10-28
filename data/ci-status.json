@@ -1,8 +1,8 @@
 {
-  "workflow": "Stats Sync",
+  "workflow": "CI",
   "conclusion": "success",
-  "branch": "main",
+  "branch": "claude/codex-direct-connection",
   "status": "completed",
-  "run_id": 40684061074,
-  "date": "2026-10-28T11:58:50Z"
+  "run_id": 40755438840,
+  "date": "2026-10-28T19:34:20Z"
 }
