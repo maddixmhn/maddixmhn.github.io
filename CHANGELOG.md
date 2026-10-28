@@ -2,6 +2,104 @@
 
 Auto-generated from conventional commits.
 
+### 2026-10-28
+
+Fix Codex connection: clear proxy, add reset script
+- setup.ps1: clear HTTP_PROXY/HTTPS_PROXY at start (unless -Proxy given)
+  and set NO_PROXY=*.openai.com so traffic goes direct by default
+- reset-codex.ps1: new one-shot reset script that clears all proxy env
+  vars, wipes Codex auth cache, reinstalls the npm package, re-runs
+  login, and does a live round-trip test
+- README: add "اگر Codex وصل نمی‌شود" section with reset instructions
+
+
+Claude-Session: https://claude.ai/code/session_01N4JPuEw51vHb9DHSSYwx6q
+
+Co-authored-by: Claude <noreply@anthropic.com>
+### 2026-10-28
+
+chore: update CI status
+
+### 2026-10-28
+
+chore: update CI status
+
+### 2026-10-28
+
+chore: update repo stats
+
+### 2026-10-28
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-27
+
+chore: update CI status
+
+### 2026-10-27
+
+chore: update repo stats
+
+### 2026-10-27
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-26
+
+chore: update CI status
+
+### 2026-10-26
+
+chore: update repo stats
+
+### 2026-10-26
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-25
+
+chore: update CI status
+
+### 2026-10-25
+
+chore: update repo stats
+
+### 2026-10-25
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-24
+
+chore: update CI status
+
+### 2026-10-24
+
+chore: update repo stats
+
+### 2026-10-24
+
+generated: profile-3d-contrib [skip ci]
+
+### 2026-10-23
+
+chore: update CI status
+
+### 2026-10-23
+
+chore: update repo stats
+
+### 2026-10-23
+
+chore: update CI status
+
+### 2026-10-23
+
+chore: update CI status
+
+### 2026-10-23
+
+chore: update changelog
+
 ### 2026-10-23
 
 Connect Claude Code and Codex CLI (cloud hook + Windows setup kit)
@@ -104,101 +202,3 @@ generated: profile-3d-contrib [skip ci]
 chore: update CI status
 
 ### 2026-10-16
-
-chore: update CI status
-
-### 2026-10-16
-
-chore: update repo stats
-
-### 2026-10-16
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-15
-
-chore: update CI status
-
-### 2026-10-15
-
-chore: update repo stats
-
-### 2026-10-15
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-14
-
-chore: update CI status
-
-### 2026-10-14
-
-chore: update repo stats
-
-### 2026-10-14
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-13
-
-chore: update CI status
-
-### 2026-10-13
-
-chore: update repo stats
-
-### 2026-10-13
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-12
-
-chore: update CI status
-
-### 2026-10-12
-
-chore: update repo stats
-
-### 2026-10-12
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-11
-
-chore: update CI status
-
-### 2026-10-11
-
-chore: update repo stats
-
-### 2026-10-11
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-10
-
-chore: update CI status
-
-### 2026-10-10
-
-chore: update repo stats
-
-### 2026-10-10
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-09
-
-chore: update CI status
-
-### 2026-10-09
-
-chore: update repo stats
-
-### 2026-10-09
-
-generated: profile-3d-contrib [skip ci]
-
-### 2026-10-08
-
-chore: update CI status
