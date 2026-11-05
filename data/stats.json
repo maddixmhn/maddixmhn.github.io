@@ -1,76 +1,76 @@
 {
-  "date": "2026-08-23T06:31:30Z",
+  "date": "2026-11-05T13:52:28Z",
   "stars": 1,
   "forks": 1,
   "open_issues": 0,
   "watchers": 1,
-  "size": 39444,
-  "last_commit": "2026-11-04T20:07:59Z",
+  "size": 45257,
+  "last_commit": "2026-11-05T13:52:28Z",
   "user": {
-    "public_repos": 13,
-    "followers": 42,
-    "following": 275,
-    "total_stars": 16,
-    "total_forks": 3,
-    "pull_requests": 11,
-    "contributed_to": 7,
-    "best_streak": 191,
-    "last_year_contributions": 2965
+    "public_repos": 17,
+    "followers": 57,
+    "following": 302,
+    "total_stars": 24,
+    "total_forks": 5,
+    "pull_requests": 17,
+    "contributed_to": 9,
+    "best_streak": 265,
+    "last_year_contributions": 4241
   },
   "languages": [
     [
       "HCL",
-      7
+      5
     ],
     [
       "JavaScript",
-      15
+      11
     ],
     [
       "PowerShell",
-      15
+      11
     ],
     [
       "Ruby",
-      7
+      5
     ],
     [
       "TypeScript",
-      30
+      23
     ]
   ],
   "contribution_days": [
-    27,
-    34,
-    42,
-    23,
-    24,
-    44,
-    20,
-    35,
-    46,
-    59,
-    17,
-    15,
-    12,
-    29,
-    22,
-    18,
+    66,
+    49,
+    56,
+    9,
     25,
-    35,
-    30,
-    27,
-    13,
-    19,
     15,
-    15,
-    36,
-    32,
-    16,
-    21,
+    5,
+    10,
     14,
-    30,
-    16
+    8,
+    10,
+    13,
+    11,
+    8,
+    22,
+    13,
+    12,
+    10,
+    9,
+    10,
+    8,
+    9,
+    12,
+    10,
+    19,
+    8,
+    10,
+    4,
+    14,
+    15,
+    3
   ],
   "repos": [
     {
@@ -92,16 +92,22 @@
       "language": "TypeScript"
     },
     {
+      "name": "frontskill",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "ha",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
       "name": "jahannama",
       "stars": 1,
       "forks": 0,
       "language": "TypeScript"
-    },
-    {
-      "name": "Maddix-Chat",
-      "stars": 0,
-      "forks": 0,
-      "language": "Ruby"
     },
     {
       "name": "Maddix-tools",
@@ -134,6 +140,18 @@
       "language": "TypeScript"
     },
     {
+      "name": "n8n-workflows",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
+      "name": "nimruz-desktop",
+      "stars": 0,
+      "forks": 0,
+      "language": null
+    },
+    {
       "name": "Nova-Client",
       "stars": 1,
       "forks": 0,
@@ -150,6 +168,12 @@
       "stars": 1,
       "forks": 0,
       "language": null
+    },
+    {
+      "name": "Whisker",
+      "stars": 8,
+      "forks": 2,
+      "language": "Ruby"
     }
   ]
 }
