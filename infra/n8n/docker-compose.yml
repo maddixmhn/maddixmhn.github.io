@@ -1,0 +1,27 @@
+services:
+  n8n:
+    # Pin this to a specific release after checking the current stable tag.
+    image: docker.n8n.io/n8nio/n8n:stable
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      N8N_HOST: ${N8N_DOMAIN}
+      N8N_PORT: "5678"
+      N8N_PROTOCOL: https
+      WEBHOOK_URL: https://${N8N_DOMAIN}/
+      N8N_EDITOR_BASE_URL: https://${N8N_DOMAIN}/
+      N8N_PROXY_HOPS: "1"
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
+      # The dashboard lives on another site, so the login cookie must be allowed inside its iframe.
+      N8N_SECURE_COOKIE: "true"
+      N8N_SAMESITE_COOKIE: none
+      GENERIC_TIMEZONE: ${TZ}
+      TZ: ${TZ}
+      EXECUTIONS_DATA_PRUNE: "true"
+      EXECUTIONS_DATA_MAX_AGE: "336"
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:

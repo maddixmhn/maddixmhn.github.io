@@ -1,0 +1,23 @@
+name = "maddix-platform-api"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ALLOWED_ORIGINS = "https://maddixmhn.github.io,http://localhost:4321"
+GROQ_MODEL = "openai/gpt-oss-20b"
+GEMINI_MODEL = "gemini-flash-latest"
+
+# Secrets, set with `wrangler secret put <NAME>` (see docs/DEPLOY.md):
+# SUPABASE_URL, SUPABASE_SERVICE_KEY, ADMIN_EMAIL,
+# TELEGRAM_BOT_TOKEN, TELEGRAM_ADMIN_CHAT_ID, TELEGRAM_WEBHOOK_SECRET,
+# GROQ_API_KEY, GEMINI_API_KEY, ELON_MASTER_KEY,
+# N8N_BASE_URL, N8N_API_KEY, N8N_EVENT_WEBHOOK, N8N_EVENT_SECRET, PAPERCLIP_WEBHOOK_SECRET
+
+[[ratelimits]]
+name = "PUBLIC_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 8
+  period = 60

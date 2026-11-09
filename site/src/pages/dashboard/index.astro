@@ -1,0 +1,9 @@
+---
+import App from "../../dashboard/App";
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="داشبورد | maddix" description="پنل خصوصی" lang="fa" path="/dashboard/" noindex bodyClass="dash-body">
+  <meta slot="head" http-equiv="Content-Security-Policy" content="base-uri 'none'; object-src 'none'" />
+  <App client:only="react" />
+</Base>

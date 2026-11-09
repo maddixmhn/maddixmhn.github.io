@@ -1,0 +1,185 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { copy, featured, more, type Lang } from "../content";
+import ChatWidget from "./ChatWidget";
+import CollabForm from "./CollabForm";
+import NebulaBackground from "./NebulaBackground";
+import Words from "./Words.astro";
+
+const { lang } = Astro.props as { lang: Lang };
+const t = copy[lang];
+const shots = import.meta.glob<{ default: ImageMetadata }>("../assets/work/*.png", { eager: true });
+const shot = (name: string) => shots[`../assets/work/${name}.png`]!.default;
+
+const planes = [
+  { tint: "var(--s-ii)", art: "infra" },
+  { tint: "#8b7bff", art: "knowledge" },
+  { tint: "var(--h-alpha)", art: "automation" },
+  { tint: "var(--o-iii)", art: "interface" },
+];
+---
+
+<NebulaBackground client:idle />
+
+<header class="nav">
+  <a class="nav-brand" href={lang === "fa" ? "/fa/" : "/"}>maddix</a>
+  <nav class="nav-links" aria-label={lang === "fa" ? "بخش‌های سایت" : "Sections"}>
+    <a href="#work">{t.nav.work}</a>
+    <a href="#nebula">{t.nav.nebula}</a>
+    <a class="nav-primary" href="#join">{t.nav.join}</a>
+    <a href="#contact">{t.nav.contact}</a>
+    <a class="nav-lang" href={t.nav.otherHref} hreflang={t.nav.otherLang} lang={t.nav.otherLang}>{t.nav.other}</a>
+  </nav>
+</header>
+
+<main>
+  <section class="journey" data-hue="0">
+    <div class="journey-pin">
+      <div class="hero-copy">
+        <h1 class="hero-title"><Words text={t.hero} /></h1>
+        <p class="hero-lead">{t.lead}</p>
+        <div class="hero-actions">
+          <a class="btn" href="#work">{t.ctaWork}</a>
+          <a class="btn btn-quiet" href="#contact">{t.ctaTalk}</a>
+        </div>
+      </div>
+
+      <div class="layers">
+        {t.layers.map((layer) => (
+          <article class="layer">
+            <h2 class="layer-name">{layer.name}</h2>
+            <p>{layer.body}</p>
+            <p class="layer-tools" dir="auto">{layer.tools}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="stack-wrap" aria-hidden="true">
+        <div class="stack">
+          {planes.map((plane, i) => (
+            <div class="plane" style={`--i:${i};--tint:${plane.tint}`}>
+              <svg viewBox="0 0 240 190" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                {plane.art === "interface" && (
+                  <>
+                    <rect x="8" y="8" width="224" height="174" rx="14" />
+                    <path d="M8 38h224" />
+                    <rect x="28" y="58" width="104" height="14" rx="7" fill="currentColor" stroke="none" />
+                    <path d="M28 90h150M28 108h120" opacity=".65" />
+                    <rect x="28" y="130" width="62" height="28" rx="14" fill="currentColor" stroke="none" />
+                  </>
+                )}
+                {plane.art === "automation" && (
+                  <>
+                    <path d="M58 58c44 0 34 74 82 74M58 58c44 0 34-6 82-6" />
+                    <rect x="16" y="38" width="46" height="40" rx="10" fill="currentColor" stroke="none" />
+                    <rect x="138" y="32" width="46" height="40" rx="10" />
+                    <rect x="138" y="112" width="46" height="40" rx="10" />
+                    <path d="M184 52h28M184 132h28" />
+                  </>
+                )}
+                {plane.art === "knowledge" && (
+                  <>
+                    <path d="M46 44 120 92l74-58M120 92l-52 66M120 92l66 58M46 44l22 114" opacity=".7" />
+                    {[[46, 44], [194, 34], [120, 92], [68, 158], [186, 150]].map(([cx, cy], n) => (
+                      <circle cx={cx} cy={cy} r={n === 2 ? 15 : 9} fill="currentColor" stroke="none" />
+                    ))}
+                  </>
+                )}
+                {plane.art === "infra" && (
+                  <>
+                    {[16, 72, 128].map((y) => (
+                      <>
+                        <rect x="14" y={y} width="212" height="44" rx="11" />
+                        <circle cx="38" cy={y + 22} r="6" fill="currentColor" stroke="none" />
+                        <path d={`M66 ${y + 22}h86`} opacity=".65" />
+                      </>
+                    ))}
+                  </>
+                )}
+              </svg>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="section" data-hue="1">
+    <h2 class="section-title">{t.work.title}</h2>
+    {featured.map((project) => (
+      <article class="case">
+        <div class="case-copy">
+          <h3 class="case-name">{project.name[lang]}</h3>
+          <p class="case-kind">{project.kind![lang]}</p>
+          <p class="case-note">{project.note![lang]}</p>
+          <a class="btn btn-quiet" href={project.url} rel="noopener" target="_blank">{t.work.visit}<span class="sr-only"> {project.name[lang]}</span></a>
+        </div>
+        <div class="browser">
+          <div class="browser-bar">{project.host}</div>
+          <div class="shot">
+            <Image src={shot(`full-${project.id}`)} width={1100} format="webp" quality={72} alt={`${project.name[lang]}, ${project.host}`} loading="lazy" />
+          </div>
+        </div>
+      </article>
+    ))}
+
+    <details class="more">
+      <summary><span class="label-closed">{t.work.more}</span><span class="label-open">{t.work.less}</span></summary>
+      <div class="more-grid">
+        {more.map((project) => {
+          const Tag = project.url ? "a" : "div";
+          return (
+            <Tag class="more-card" href={project.url} rel={project.url ? "noopener" : undefined} target={project.url ? "_blank" : undefined}>
+              <Image src={shot(`preview-${project.id}`)} width={560} format="webp" quality={70} alt="" loading="lazy" />
+              <span>{project.name[lang]}</span>
+            </Tag>
+          );
+        })}
+      </div>
+    </details>
+  </section>
+
+  <section id="nebula" class="section" data-hue="2">
+    <h2 class="section-title">{t.nebula.title}</h2>
+    <p class="nebula-lead">{t.nebula.lead}</p>
+    <ol class="flow">
+      {t.nebula.steps.map((step) => <li><strong>{step.name}</strong><p>{step.body}</p></li>)}
+    </ol>
+    <a class="btn" href="#join">{t.nebula.cta}</a>
+  </section>
+
+  <section id="join" class="section join" data-hue="3">
+    <div>
+      <h2 class="section-title">{t.join.title}</h2>
+      <p class="join-lead">{t.join.lead}</p>
+    </div>
+    <CollabForm client:visible lang={lang} />
+  </section>
+
+  <section class="section" data-hue="1">
+    <h2 class="section-title">{t.background.title}</h2>
+    <ul class="jobs">
+      {t.background.jobs.map((job) => <li><span class="when">{job.when}</span><strong>{job.where}</strong><span>{job.what}</span></li>)}
+    </ul>
+  </section>
+
+  <section id="contact" class="section" data-hue="0">
+    <h2 class="section-title">{t.contact.title}</h2>
+    <p class="contact-lead">{t.contact.lead}</p>
+    <div class="links">
+      <a class="btn" href="mailto:mohammad@iodeck.ir">{t.contact.email}</a>
+      <a class="btn btn-quiet" href="https://t.me/MadiM1992" rel="noopener me" target="_blank">Telegram</a>
+      <a class="btn btn-quiet" href="https://github.com/maddixmhn" rel="noopener me" target="_blank">GitHub</a>
+      <a class="btn btn-quiet" href="https://www.linkedin.com/in/maddixmhn/" rel="noopener me" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">{t.footer}</footer>
+
+<ChatWidget client:idle lang={lang} />
+
+<script>
+  import "../scripts/motion";
+</script>

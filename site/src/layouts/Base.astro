@@ -1,0 +1,90 @@
+---
+import "@fontsource-variable/bricolage-grotesque/index.css";
+import "@fontsource-variable/vazirmatn/index.css";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  lang: "en" | "fa";
+  path: string;
+  noindex?: boolean;
+  bodyClass?: string;
+}
+
+const { title, description, lang, path, noindex = false, bodyClass } = Astro.props;
+const site = Astro.site!.toString().replace(/\/$/, "");
+const url = `${site}${path}`;
+const image = `${site}/og.png`;
+
+const person = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${site}/#person`,
+      name: "Mohammad Mehrani",
+      alternateName: ["maddix", "محمد مهرانی"],
+      jobTitle: "System Designer",
+      url: `${site}/`,
+      image: `${site}/images/maddix.webp`,
+      email: "mailto:mohammad@iodeck.ir",
+      address: { "@type": "PostalAddress", addressLocality: "Tehran", addressCountry: "IR" },
+      sameAs: [
+        "https://github.com/maddixmhn",
+        "https://www.linkedin.com/in/maddixmhn/",
+        "https://t.me/MadiM1992",
+      ],
+      knowsAbout: ["System design", "Workflow automation", "n8n", "AI agents", "Knowledge bases", "DevOps", "Kubernetes", "CI/CD"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site}/#website`,
+      url: `${site}/`,
+      name: "maddix",
+      inLanguage: ["en", "fa"],
+      publisher: { "@id": `${site}/#person` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang={lang} dir={lang === "fa" ? "rtl" : "ltr"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b0e28" />
+    <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large"} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    {
+      !noindex && (
+        <>
+          <link rel="canonical" href={url} />
+          <link rel="alternate" hreflang="en" href={`${site}/`} />
+          <link rel="alternate" hreflang="fa" href={`${site}/fa/`} />
+          <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={url} />
+          <meta property="og:image" content={image} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:locale" content={lang === "fa" ? "fa_IR" : "en_US"} />
+          <meta property="og:site_name" content="maddix" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+        </>
+      )
+    }
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <slot />
+  </body>
+</html>

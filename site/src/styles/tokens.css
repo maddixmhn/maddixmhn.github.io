@@ -1,0 +1,17 @@
+:root {
+  color-scheme: dark;
+  --void: #0b0e28;
+  --void-2: #141842;
+  --starlight: #f1eefa;
+  --dust: #a9abd0;
+  --h-alpha: #ff5c7a;
+  --o-iii: #43d9cf;
+  --s-ii: #f5b94c;
+  --glass: rgb(255 255 255 / 0.07);
+  --glass-strong: rgb(255 255 255 / 0.12);
+  --glass-line: rgb(255 255 255 / 0.16);
+  --font: "Bricolage Grotesque Variable", system-ui, sans-serif;
+  --font-fa: "Vazirmatn Variable", system-ui, sans-serif;
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,7 @@
+---
+// Splits by word only: splitting Persian by letter would break its joined letterforms.
+const { text } = Astro.props as { text: string };
+const words = text.split(/\s+/);
+---
+
+{words.map((word, i) => <><span class="word" style={`--i:${i}`}>{word}</span>{" "}</>)}

@@ -1,0 +1,13 @@
+# maddix
+
+> Mohammad Mehrani (maddix) is a system designer in Tehran. He designs complete systems: websites, n8n automations, AI agents, knowledge bases and the Linux infrastructure they run on.
+
+## Pages
+
+- [Home](https://maddixmhn.github.io/): work, approach, Nebula, collaboration and contact in English
+- [فارسی](https://maddixmhn.github.io/fa/): the same content in Persian
+
+## Contact
+
+- Email: mohammad@iodeck.ir
+- GitHub: https://github.com/maddixmhn

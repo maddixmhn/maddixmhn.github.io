@@ -1,0 +1,9 @@
+---
+import Landing from "../components/Landing.astro";
+import { copy } from "../content";
+import Base from "../layouts/Base.astro";
+---
+
+<Base title={copy.en.title} description={copy.en.description} lang="en" path="/">
+  <Landing lang="en" />
+</Base>

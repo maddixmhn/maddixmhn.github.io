@@ -117,9 +117,6 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
-# mkdocs documentation
-/site
-
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -140,3 +137,12 @@ pnpm-debug.log*
 
 .vercel
 .env*
+node_modules/
+.astro/
+site/dist/
+.wrangler/
+.dev.vars
+.env
+!.env.example
+!site/src/lib/
+org/out/
