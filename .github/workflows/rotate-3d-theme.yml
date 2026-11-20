@@ -2,7 +2,7 @@ name: Rotate 3D Theme
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "53 0 * * 4"
   workflow_dispatch:
 
 permissions:

@@ -1,7 +1,7 @@
 name: Stats Sync
 on:
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "17 6 * * 1,4"
   workflow_dispatch:
 
 permissions:
